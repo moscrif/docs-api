@@ -1,5 +1,4 @@
 /**
-
 This class represents implementations of the Advanced Encryption Standard (AES).
 Advanced Encryption Standard is a specification for the encryption of electronic data using symmetric-key algorithm, what means that the same key is used for both encrypting and decrypting.
 @class AES

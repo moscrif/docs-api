@@ -1,5 +1,4 @@
-/**
-
+﻿/**
 Represents indexed vector (array) of values. The Array object is used to store multiple values in a single variable.
 @class Array
 @example
