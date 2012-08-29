@@ -1,0 +1,12 @@
+{
+    "name": "Moscrif API",
+    "description": "The Foo API: a library for doing X, Y, and Z",
+    "version": "2012q3",
+    "url": "http://moscrif.com/",
+    "options": {
+ 		"extension": ".ms",
+ 		"paths": ["./input/native", "../moscrif-framework"],
+ 		"exclude": "ui,uix,uix-skin,drawings,box2d,svg,patterns",
+ 		"outdir": "./output/"
+    }
+}
