@@ -1,8 +1,9 @@
 /**
 Main application window
-@module core
+@class Facebook
+@module net
 */
-class Moscrif.Window
+class Facebook
 {
     /**
     Creates new instance of Window class.
