@@ -1,5 +1,4 @@
 /**
-
 Represents compiled regular expresion.
 
 * `\` - For characters that are usually treated literally, indicates that the next character is special and not to be interpreted literally.
@@ -53,7 +52,6 @@ Represents compiled regular expresion.
 * \S -    Matches any non-space character from any alphabet.
 * \x -    Matches any hexadecimal character.
 * \X -    Matches any non-hexadecimal character.*
-
 @class RegExp
 @module core
 */
