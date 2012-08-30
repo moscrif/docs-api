@@ -1,8 +1,9 @@
 module.exports = {
     includeAsLib: function(item) {
-		var res = item.substring(21);
-		if (res.length < 4)
+    	var prefixNatives = "input/native/";
+    	var prefixFramework = "../moscrif-framework/";
+    	if (item.length >= prefixNatives.length && item.substring(0, prefixNatives.length) == prefixNatives)
 			return "";
-        return "include \"lib://" + item.substring(21) + "\";";
+        return "include \"lib://" + item.substring(prefixFramework.length) + "\";";
     }
 };

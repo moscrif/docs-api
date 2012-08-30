@@ -2,6 +2,7 @@
 In-App Purchases are encapsulated in objects of the AppStore class. This class supports only Apple iTunes Store. Google's Android Market will be added soon
 in separate class.
 @class AppStore
+@extends Object
 @module store
 */
 class AppStore
@@ -104,6 +105,12 @@ class AppStore
     Called when the purchase has been successfully processed.
     @event onTransactionCompleted
     @param transaction {AppStoreTransaction}
+    @example
+        var appStore = new AppStore();
+        appStore.onTransactionCompleted = function(transaction) {
+            appStore.finish(transaction);
+        }
+        appStore.purchase("com.company.productA.feature1");
     */
     property onTransactionCompleted(v) { get; set; }
 
@@ -113,13 +120,27 @@ class AppStore
     @param transaction {AppStoreTransaction}
     @param errorCode {Integer}
     @param errorMessage {String}
+    @example
+        var appStore = new AppStore();
+        appStore.onTransactionFailed = function(transaction, errorCode, errorMessage) {
+            appStore.finish(transaction);
+            console << "Error #" << errorCode << "\n";
+            console << "\t" << errorMessage << "\n";
+        }
+        appStore.purchase("com.company.productA.feature1");
     */
     property onTransactionFailed(v) { get; set; }
 
     /**
     Called when the purchase has been restored.
-    @event onTransactionCompleted
+    @event onTransactionRestored
     @param transaction {AppStoreTransaction}
+    @example
+        var appStore = new AppStore();
+        appStore.onTransactionRestored = function(transaction) {
+            console << "Transaction of product identifier " << transaction.productIdentifier << " has been restored.\n";
+        }
+        appStore.purchase("com.company.productA.feature1");
     */
     property onTransactionRestored(v) { get; set; }
 

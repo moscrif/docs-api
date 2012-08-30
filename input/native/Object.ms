@@ -96,12 +96,12 @@ class Object
 
    /**
     Reports class name and list of property name/values of the object. Intended to use for debugging purposes.
-    @method show
+    @method debugShow
     @param out=console {Stream} Stream for output, the default is console.
     @param [p] {Object}
     @return {Array} list of members.
     */
-    function show(out = console) { }
+    function debugShow(out = console) { }
 
    /**
     Evaluates (interprets) what with context of this equal to the object. If namespace object is given then it is used as global namespace for evaluated code.
