@@ -6,7 +6,7 @@
     "options": {
  		"extension": ".ms",
  		"paths": ["./input/native", "../moscrif-framework"],
- 		"exclude": "ui,uix,uix-skin,drawings,box2d,svg,patterns",
+ 		"exclude": "ui,uix,uix-skin,drawings,svg,patterns",
  		"outdir": "./output/"
     }
 }
