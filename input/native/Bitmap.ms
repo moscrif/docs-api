@@ -1,7 +1,7 @@
 /**
 Bitmap class manages all operations with pictures. Using this class developer can load images from files and get theirs size, configuration etc.Bitmap class supports following formats (*.jpg, *.png)
 @class Bitmap
-@module graphics
+@module core
 @example
     function loadImage()
     {
