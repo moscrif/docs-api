@@ -91,7 +91,7 @@ class Facebook
     /**
     Called when {{#crossLink "Facebook/dialog"}}{{/crossLink}} has been failed.
     @event onDialogFailed
-    @param status {String} Reason of failure
+    @param status {String} Reason of failure.
     */
     property onDialogFailed(v) { }
 }
