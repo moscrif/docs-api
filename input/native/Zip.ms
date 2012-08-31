@@ -1,8 +1,7 @@
 /**
-
 This class allows to create zip archive.
 @class Zip
-@module core
+@module zip
 @example
         var archive = new Zip("dat://archive.zip");
         if (!archive)

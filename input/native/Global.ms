@@ -3,7 +3,7 @@ Following functions and variables that "live" in global namespace so they access
 @class Global
 @module core
 @example
-        var r = eval( " 348.0 / 23.7 " );
+        var r = eval("348.0 / 23.7");
         console << r << "\n";
 */
 class Global
@@ -11,9 +11,16 @@ class Global
 
     /**
     Standard input/output stream. Intended to use for debugging purposes.
-    @property console
+    @attribute console
     @type {Stream}
     @readOnly
+    @example
+        console << "Hello\n";
+        console << "Hello" <<  "\n";
+        console << "\tHello" <<  "\n";
+        console << 1234 << " " << {x:10} << "\n";
+        console.printf("Hello");
+        console.printf("Integer %d", 123);
     */
     property console() { }
 
@@ -21,8 +28,8 @@ class Global
     Evaluates (interprets) input and returns its value. If input is a string then function tries to interpret it as if it contains script source code.
     If input is a stream object then it compiles and executes source code from it.
     @method parseData
-    @param {String|Stream} input String or stream object, containing source code to run.
-    @param {Object} [env] Is an environment object - if provided then script execution takes place in the namespace of that object..
+    @param input {String|Stream} String or stream object, containing source code to run.
+    @param [env] {Object} Is an environment object - if provided then script execution takes place in the namespace of that object..
     @return {Object} Value of the input
     @example
             //Example: after execution of the following:
@@ -38,7 +45,7 @@ class Global
     JSON++ data parser.Evaluates (interprets) data literal at the input and returns its value. Input shall contain valid data literal expression otherwise parsing exception will be thrown.
     Main difference from the eval function is that parseValue will not parse and execute any function declarations or functions so it is safe to use this function when data is coming from unknown sources e.g. in AJAX like of interactions.
     @method parseData
-    @param {String|Stream} input String or stream object, containing source code to parse
+    @param input {String|Stream} String or stream object, containing source code to parse
     @return {Object} Value of the input
     @example
             //Example 1: after execution of the following:
@@ -55,8 +62,8 @@ class Global
     /**
     Stores the value into file filename or stream in binary form.
     @method store
-    @param {String|Stream} file String - file name or Stream object for output file.
-    @param {Object} value Value to store.
+    @param file {String|Stream} String - file name or Stream object for output file.
+    @param value {Object} Value to store.
     @return {Boolean} true if data was stored successfully
     @example
             //Example 1: after execution of the following:
@@ -73,7 +80,7 @@ class Global
     /**
     Restores value previously written into the file (filename) or stream by function store.
     @method fetch
-    @param {String|Stream} file Either string - file name or stream object for source file.
+    @param file {String|Stream} Either string - file name or stream object for source file.
     @return {Object} Restored value or null if operation failed.
     */
     function fetch(file) { }
@@ -81,7 +88,7 @@ class Global
     /**
     Hash value of its argument.
     @method hash
-    @param {Object} value Value to hash.
+    @param value {Object} Value to hash.
     @return {Integer} Hashed value of its argument.
     */
     function hash(value) { }
@@ -98,7 +105,7 @@ class Global
     /**
     Generate a random number between 0 and maxNumber-1.
     @method rand
-    @param {Integer} maxNumber Upper limit of generated numbers
+    @param maxNumber {Integer} Upper limit of generated numbers
     @return {Integer} Random number ranged 0..maxNumber-1
     @example
         var limit = rand(100); // 0..99
@@ -115,7 +122,7 @@ class Global
     /**
     Parses the url string.
     @method crackUrl
-    @param {String} url Url string too parse.
+    @param url {String} Url string too parse.
     @return {Object} Returns an object having following fields:
 
     1. port - integer, tcp/ip port number;
@@ -159,7 +166,7 @@ class Global
     /**
     Handle application errors.
     @event onError
-    @param {Exception} exp Moscrif exception instance.
+    @param exp {Exception} The exception instance.
     */
     function onError(exp) { }
 }

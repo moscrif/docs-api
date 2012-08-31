@@ -1,8 +1,7 @@
 /**
-
 The Path class encapsulates compound (multiple contour) geometric paths consisting of straight line segments, quadratic curves, and cubic curves. This class manages operations with vector graphics.
 @class Path
-@module graphics
+@module core
 */
 class Path
 {

@@ -14,7 +14,7 @@ class Float
     */
     property MAX() { }
 
-/**
+    /**
     Minimal value of the float type.
     @property MIN
     @type {Float}

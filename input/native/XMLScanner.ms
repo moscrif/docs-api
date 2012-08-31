@@ -1,8 +1,7 @@
 /**
-
 XMLScanner - XML/HTML tokenzier. Also known as XML push parser.
 @class XMLScanner
-@module file
+@module core
 */
 class XMLScanner
 {

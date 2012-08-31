@@ -1,5 +1,4 @@
 /**
-
 Generates recurring events in an application.
 @class Timer
 @module core

@@ -1,10 +1,9 @@
 /**
-
 This class implements text viewer and text editor.
-@class TextView
+@class Moscrif.TextView
 @module ui
 */
-class TextView
+class Moscrif.TextView
 {
 
     /**

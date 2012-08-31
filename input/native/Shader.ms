@@ -1,10 +1,9 @@
 /**
-
 Shader is the based class for objects that return horizontal spans of colors during drawing.
 A subclass of Shader is installed in a Paint calling paint.shader = shader.
 After that any object (other than a bitmap) that is drawn with that paint will get its color(s) from the shader.
 @class Shader
-@module graphics
+@module core
 */
 class Shader
 {

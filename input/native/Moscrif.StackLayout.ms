@@ -1,7 +1,6 @@
 /**
-
 This class arranges components in a vertical (or horizontal) strip aligning them at right, left or centered, and/or filling them to take up any extra vertical or horizontal space.
-@class StackLayout
+@class Moscrif.StackLayout
 @module ui
 @example
         var layout = new Moscrif.StackLayout();
@@ -21,7 +20,7 @@ This class arranges components in a vertical (or horizontal) strip aligning them
         itemB.stretch = #both;
         container.add(itemB);
 */
-class StackLayout
+class Moscrif.StackLayout
 {
 
     /**

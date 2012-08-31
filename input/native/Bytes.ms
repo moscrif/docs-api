@@ -1,5 +1,4 @@
 /**
-
 Bytes is an array of bytes.
 @class Bytes
 @module core

@@ -2,7 +2,7 @@
 
 The Matrix class holds a 3x3 matrix for transforming coordinates.
 @class Matrix
-@module graphics
+@module core
 @example
         var bitmap = Bitmap.fromFile("dat://moscrif.jpg");
 
@@ -32,7 +32,7 @@ class Matrix
     */
     function reset() { }
 
-/**
+    /**
     Set the matrix to translate by (dx, dy).
     @param dx {Float} move on the x axis.
     @param dy {Float} move on the y axis.
@@ -48,7 +48,7 @@ class Matrix
     */
     function setTranslate(dx, dy) { }
 
-/**
+    /**
     Set the matrix to scale by sx and sy, with a pivot point at (px, py). The pivot point is the coordinate that should remain unchanged by the specified transformation.
     @param sx {Float} x scale.
     @param sy {Float} y scale.
@@ -71,7 +71,7 @@ class Matrix
     */
     function setScale(sx, sy [,px, py]) { }
 
-/**
+    /**
     Set the matrix to scale by sx and sy, with a pivot point at (px, py). The pivot point is the coordinate that should remain unchanged by the specified transformation.
 
     @param degrees {Float} Number of degrees to rotate (in clockwise).
@@ -94,7 +94,7 @@ class Matrix
     */
     function setRotate(degrees, px, py) { }
 
-/**
+    /**
     Set the matrix to skew by sx and sy, with a pivot point at (px, py). The pivot point is the coordinate that should remain unchanged by the specified transformation.
     @param kx {Float} x skew.
     @param ky {Float} y skew.
@@ -105,7 +105,7 @@ class Matrix
     function setSkew(kx, ky, px, py) { }
 
 
-/**
+    /**
     Preconcats the matrix with the specified translation. M' = M * T(dx, dy).
     @param dx {Float} Move on the x axis.
     @param dy {Float} Move on the x axis.
@@ -128,7 +128,7 @@ class Matrix
     */
     function preTranslate(dx, dy) { }
 
-/**
+    /**
     Preconcats the matrix with the specified scale. M' = M * S(sx, sy, px, py).
     @param sx {Float} x scale.
     @param sy {Float} y scale.
@@ -152,7 +152,7 @@ class Matrix
     */
     function preScale(sx, sy, px, py) { }
 
-/**
+    /**
     Preconcats the matrix with the specified rotation. M' = M * R(degrees, px, py).
     @param degrees {Float} Number of degrees to rotate (in clockwise).
     @param px {Float} Coordinates of pivot point on x axis.
@@ -176,7 +176,7 @@ class Matrix
     */
     function preRotate(degrees, px, py) { }
 
-/**
+    /**
     Preconcats the matrix with the specified skew. M' = M * K(kx, ky, px, py).
     @param kx {Float} x skew.
     @param ky {Float} y skew.
@@ -187,7 +187,7 @@ class Matrix
     */
     function preSkew(kx, ky, px, py) { }
 
-/**
+    /**
     Postconcats the matrix with the specified translation. M' = T(dx, dy) * M.
     @param dx {Float} Move on the x axis.
     @param dy {Float} Move on the x axis.
@@ -210,7 +210,7 @@ class Matrix
     */
     function postTranslate(dx, dy) { }
 
-/**
+    /**
     Postconcats the matrix with the specified scale. M' = S(sx, sy, px, py) * M.
     @param sx {Float} x scale.
     @param sy {Float} y scale.
@@ -234,7 +234,7 @@ class Matrix
     */
     function postScale(sx, sy, px, py) { }
 
-/**
+    /**
     Postconcats the matrix with the specified rotation. M' = R(degrees, px, py) * M.
     @param degrees {Float} Number of degrees to rotate (in clockwise).
     @param px {Float} Coordinates of pivot point on x axis.
@@ -259,7 +259,7 @@ class Matrix
     function postRotate(degrees, px, py) { }
 
 
-/**
+    /**
     Postconcats the matrix with the specified skew. M' = K(kx, ky, px, py) * M.
     @param kx {Float} x skew.
     @param ky {Float} y skew.
@@ -270,7 +270,7 @@ class Matrix
     */
     function postSkew(kx, ky, px, py) { }
 
-/**
+    /**
     Set the matrix to the scale and translate values that map the source rectangle to the destination rectangle, returning true if the the result can be represented.
     @param srcleft {Integer} The source rectangle to map from.
     @param srctop {Integer} The source rectangle to map from.

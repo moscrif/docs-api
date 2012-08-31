@@ -1,10 +1,11 @@
 /**
-
-Canvas encapsulates all states of drawing into a device (bitmap). This includes a reference to the device itself, and a stack of matrix/clip values. For any given draw call (e.g. drawRect), the geometry of the object being drawn is transformed by the concatenation of all the matrices in the stack. The transformed geometry is clipped by the intersection of all of the clips in the stack.
-While the Canvas hold the state of the drawing device, the state (style) of the object being drawn is held by Paint, which is provided as a parameter to each of the draw() methods.  Paint holds attributes such as color, typeface, textSize, strokeWidth, shader (e.g. gradients, patterns), etc.
-
+Canvas encapsulates all states of drawing into a device (bitmap). This includes a reference to the device itself, and a stack of matrix/clip values.
+    For any given draw call (e.g. drawRect), the geometry of the object being drawn is transformed by the concatenation of all the matrices in the stack.
+    The transformed geometry is clipped by the intersection of all of the clips in the stack.
+    While the Canvas hold the state of the drawing device, the state (style) of the object being drawn is held by Paint,
+    which is provided as a parameter to each of the draw() methods. Paint holds attributes such as color, typeface, textSize, strokeWidth, shader (e.g. gradients, patterns), etc.
 @class Canvas
-@module graphics
+@module core
 */
 class Canvas
 {

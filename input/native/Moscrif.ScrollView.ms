@@ -1,30 +1,30 @@
 /**
-
 This class defines controls, which are components with visual representation.
-@class View
+@class Moscrif.ScrollView
 @module ui
-@example
-        var btnView = new Moscrif.View("button");
-        btnView.width = 150;
-        btnView.height = 150;
-        btnView.top = 100;
-        btnView.left = 100;
-        btnView.onDraw = function(s, c)
-        {
-            ......
-        }
-        app.add(btnView);
 */
-class View
+class Moscrif.ScrollView
 {
 
     /**
-    Create new object.
+    Create new ScrollView object.
     @method this
-    @param [name] {String} Name of the object. Pass null for unnamed view
-    @return {View}
+    @param [name=null] {String} Name of object. Use null for unnamed control.
+    @return {ScrollView}
+    @example
+            var layout = new Moscrif.StackLayout();
+            layout.align = #start;
+            layout.pack = #start;
+            layout.orientation = #vert;
+
+            container = new Moscrif.ScrollView("container");
+            container.scrollMode = #vert;
+            container.dockContent = #top;
+            container.layout = layout;
+            …. left, top, width, height ….
+            app.add(container);
     */
-    function this([name]) { }
+    function this(name = null) { }
 
     /**
     This function ensure redrawing a rectangle, determined by parameters. If no parameters are set, whole object will be redraw. Redrawing manages the function, which is set to onDraw event.
@@ -33,13 +33,6 @@ class View
     @param [top] {Boolean} Top border of the rectangle to be invalidated.
     @param [right] {Boolean} Right border of the rectangle to be invalidated.
     @param [bottom] {Boolean} Bottom border of the rectangle to be invalidated.
-    @example
-            container = new Moscrif.View("container");
-            ….
-            app.add(container);
-            ….
-            // redraw top half of view
-            container.invalidate(0, 0, System.width, System.height / 2);
     */
     function invalidate([left, top, right, bottom]) { }
 
@@ -51,23 +44,65 @@ class View
 
             * #front
             * #back
-    @return {View} Return instance of itself.
-    @example
-            var container = new Moscrif.View("container");
-            ... width, height, onDraw ...
-            app.add(container);
-
-            var itemA = new Moscrif.View("itemA");
-            ... width, height (60), top (0), onDraw ...
-            container.add(itemA);
-
-            var itemB = new Moscrif.View("itemB");
-            ... width, height (60), top (60), onDraw ...
-            container.add(itemB);
+    @return {ScrollView} Return instance of itself.
     */
     function add(view [, order]) { }
 
-   /**
+    /**
+    Removes all views from the object.
+    @method removeAll
+    */
+    function removeAll() { }
+
+    /**
+    @method getChildrenBounds
+    @return {Multivalue}
+    */
+    function getChildrenBounds() { }
+
+    /**
+    @method getChildrenSize
+    @return {Multivalue}
+    */
+    function getChildrenSize() { }
+
+    /**
+    Pause layer's recalculating. This function is useful when a lot of items are inserted into view in short time. When resumeLayout is called, all items will be inserted at once .
+    @method suspendLayout
+    @return {Window}
+    @example
+            list.native.suspendLayout();
+            for (var i = 0; i &lt;100; i++) {
+                items[i] = new ListViewItem(null,null,i.toString());
+                list.add(items[i]);
+            }
+            list.native.resumeLayout();
+    */
+    function suspendLayout() { }
+
+
+    /**
+    Resume layer's recalculating.
+    @method resumeLayout
+    @return {Window}
+    @example
+            list.native.suspendLayout();
+            for (var i = 0; i &lt;100; i++) {
+                items[i] = new ListViewItem(null,null,i.toString());
+                list.add(items[i]);
+            }
+            list.native.resumeLayout();
+    */
+    function resumeLayout() { }
+
+    /**
+    Perform (force) layer calculation.
+    @method performLayout
+    @return {Window}
+    */
+    function performLayout() { }
+
+    /**
     Function sets focus to the object.
     @method setFocus
     @return {Boolean}
@@ -82,135 +117,24 @@ class View
     function hasFocus() { }
 
     /**
-    Search for child view, which name is same as name from function's param.
-    @method find
-    @param name {String} Name of the child view to search
-    @return {View} Instance of found child view, or null if not found.
-    @example
-            var container = new Moscrif.View("container");
-            
-            var itemA = new Moscrif.View("itemA");
-            container.add(itemA);
-            
-            var itemB = new Moscrif.View("itemB");
-            container.add(itemB);
-            …...
-            // find view by name
-            var item = container.find("itemA");
-            // detach them
-            item.detach();
+    Function scrolls elements to coordinates (dx and dy). However, this function scrolls only in adjusted set scroll mode (horizontal or vertical).
+    @method scrollBy
+    @param dx {View} Horizontal coordinate.
+    @param dy {View} Vertical coordinates.
+    @return {ScrollView}
     */
-    function find(name) { }
-
-   /**
-    Returns four values (left, top, right, bottom) of child's union content.
-    @method getChildrenBounds
-    @return {Multivalue}
+    function scrollBy(dx, dy) { }
+    /**
+    Function scrolls elements to coordinates (dx and dy). However, this function scrolls only in adjusted set scroll mode (horizontal or vertical).
+    @method scrollBy
+    @param x {View} Horizontal coordinate.
+    @param y {View} Vertical coordinates.
+    @return {ScrollView}
     */
-    function getChildrenBounds() { }
+    function scrollBy(dx, dy) { }
 
     /**
-    Returns wo values (width, height) of child's union content.
-    @method getChildrenSize
-    @return {Multivalue}
-    */
-    function getChildrenSize() { }
-
-    /**
-    Pause layer's recalculating. This function is useful when a lot of items are inserted into view in short time. When resumeLayout is called, all items will be inserted at once .
-    @method suspendLayout
-    @return {Window}
-    @example
-            var container = new Moscrif.View("container");
-               
-            // suspend layout before adding a large number of components to ensure better performance
-            container.suspendLayout();
-            for (var i = 0; i&lt;NUM_OF_ITEMS; i++) {
-                var item = new Moscrif.View("item_" + i);
-                …. width, heigh, onDraw (left, top is managed by layout)...
-                container.add(item);
-            }
-            // resume layout
-            container.resumeLayout()
-    */
-    function suspendLayout() { }
-
-
-    /**
-    Resume layer's recalculating.
-    @method resumeLayout
-    @return {Window}
-    @example
-            var container = new Moscrif.View("container");
-            
-            // suspend layout before adding a large number of components to ensure better performance
-            container.suspendLayout();
-            for (var i = 0; i&lt;NUM_OF_ITEMS; i++) {
-                var item = new Moscrif.View("item_" + i);
-                …. width, heigh, onDraw (left, top is managed by layout)...
-                container.add(item);
-            }
-            // resume layout
-            container.resumeLayout();
-    */
-    function resumeLayout() { }
-
-    /**
-    Performs (force) layout calculations.
-    @method performLayout
-    @return {Window}
-    */
-    function performLayout() { }
-
-   /**
-    Suspends the drawing of this view.
-    @method suspendDrawing
-    @return {Window}
-    */
-    function suspendDrawing() { }
-
-   /**
-    Resume view's drawing.
-    @method resumeDrawing
-    @return {Window}
-    */
-    function resumeDrawing() { }
-
-   /**
-    Resume view's drawing.
-    @method resumeDrawing
-    @return {Window}
-    */
-    function resumeDrawing() { }
-
-   /**
-    Remove this view form it's parent.
-    @method detach
-    @example
-            var container = new Moscrif.View("container");
-            
-            var itemA = new Moscrif.View("itemA");
-            container.add(itemA);
-            
-            var itemB = new Moscrif.View("itemB");
-            container.add(itemB);
-            …...
-            // find view by name
-            var item = container.find("itemA");
-            // detach them
-            item.detach();
-    */
-    function detach() { }
-
-    /**
-    Count of the childs.
-    @property childredCount
-    @type {Integer}
-    */
-    property childredCount() { }
-
-    /**
-    Name of the object.
+     Name of the object.
     @property name
     @type {String}
     */
@@ -224,14 +148,14 @@ class View
     property layout() { }
 
     /**
-    X - coordinates of view's position.
+    X - coordinates of left border.
     @property left
     @type {Integer}
     */
     property left() { }
 
 /**
-    Y - coordinates of view's position.
+    Y - coordinates of left border.
     @property top
     @type {Integer}
     */
@@ -245,14 +169,14 @@ class View
     property width() { }
 
 /**
-    Height of the view (in pixels).
+    Height of the object (in pixels).
     @property height
     @type {Integer}
     */
     property height() { }
 
 /**
-    Visibility of the view. True = visible, false = invisible. Default is visible.
+    Visibility of the object. True = visible, false = invisible. Default is visible.
     @property visible
     @type {Boolean}
     */
@@ -265,14 +189,6 @@ class View
     */
     property focusable() { }
 
-
-/**
-    Set/Get if the view is not clipped to its bounds.
-    @property clipToBounds
-    @type {Boolean}
-    */
-    property clipToBounds() { }
-
 /**
     Gets or sets if the view's width is stretchable.
 
@@ -281,6 +197,58 @@ class View
     @type {Symbol}
     */
     property stretch() { }
+
+/**
+    Scroll Mode:
+
+    * #horz
+    * #vert
+    * #both
+    * #none
+    @property scrollMode
+    @type {Symbol}
+    */
+    property scrollMode() { }
+
+/**
+    Dock Content:
+
+    * #left-top
+    * #top
+    * #right-top
+    * #right
+    * #right-bottom
+    * #bottom
+    * #left-bottom
+    * #left
+    @property dockContent
+    @type {Symbol}
+    */
+    property dockContent() { }
+
+/**
+   Gets horizontal scroll.
+    @property scrollX
+    @type {Integer}
+    @readOnly
+    */
+    property scrollX() { }
+
+/**
+    Gets verical scroll.
+    @property scrollY
+    @type {Integer}
+    @readOnly
+    */
+    property scrollY() { }
+
+/**
+    Returns true if scroll is in progress.
+    @property isScrolling
+    @type {Boolean}
+    @readOnly
+    */
+    property isScrolling() { }
 
 /**
     Callback function, which is which is called from the object every 25ms.
@@ -393,14 +361,5 @@ class View
     @param y {Integer} Y coordinates of pointer.
     */
     property onPointerDragged(sender, x, y) { }
-
-/**
-    Called when this view is scrolled (only when is owned by ScrollView).
-    @event onParentScroll
-    @param sender {Object} Object which caused this event.
-    @param parent {ScrollView} Parent object.
-    */
-    property onParentScroll(sender, parent) { }
-
 
 }

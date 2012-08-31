@@ -1,5 +1,4 @@
 /**
-
 Script Function object.
 @class Function
 @module core

@@ -14,7 +14,7 @@ class Integer
     */
     property MAX() { }
 
-/**
+    /**
     Minimal value of integer type. (-2147483648)
     @property MIN
     @type {Integer}

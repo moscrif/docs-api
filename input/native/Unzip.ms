@@ -1,8 +1,7 @@
 /**
-
 This class allows to extract zip archive.
 @class Unzip
-@module core
+@module zip
 @example
         var archive = new Unzip("dat://archive.zip");
         if (!archive || !archive.first())

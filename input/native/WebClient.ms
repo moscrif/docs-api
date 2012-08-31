@@ -1,5 +1,4 @@
 /**
-
 This class allows to perform web methods.
 @class WebClient
 @module net

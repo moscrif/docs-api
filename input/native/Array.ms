@@ -1,4 +1,4 @@
-﻿/**
+/**
 Represents indexed vector (array) of values. The Array object is used to store multiple values in a single variable.
 @class Array
 @example
@@ -80,7 +80,7 @@ class Array
     /**
     Same as {{#crossLink "Array/toString"}}{{/crossLink}} - creates comma separated string from array.
     @method valueOf
-    @return {String} comma separated list of values
+    @return {String} Comma separated list of values
     */
     function valueOf()
     {
@@ -170,8 +170,8 @@ class Array
     /**
     Create new array consisting from elements of the array from start up to but not including end index, order between start and end (not included) index.
     @method slice
-    @param start {Integer}  Start index.
-    @param [end] {Integer}  End index.
+    @param start {Integer} Start index.
+    @param [end] {Integer} End index.
     @return {Array} New sliced array.
     @example
         var myCars=new Array("Saab", "Volvo", "BMW", "Mitsubishi");

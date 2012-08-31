@@ -1,8 +1,7 @@
 /**
-
 Stream class has no public constructor to creates new instance use Stream.openFile, Stream.openSocket or Stream.openString functions.
 @class Stream
-@module file
+@module core
 */
 class Stream
 {

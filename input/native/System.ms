@@ -1,5 +1,4 @@
 /**
-
 This class represents underlying system.
 @class System
 @module core

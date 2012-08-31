@@ -1,5 +1,4 @@
 /**
-
 GPS class manages all operations with gps hardware.
 @class GPS
 @module sensor

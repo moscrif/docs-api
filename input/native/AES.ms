@@ -19,9 +19,9 @@ class AES
     /**
     This function encrypts source file by Advanced Encryption Standard. The result is saved to output file. If output file does not exist, a new one is created.
     @method fileEncrypt
-    @param {String} input source file.
-    @param {String} output encrypted file.
-    @param {String} password key.
+    @param input  {String} Source file.
+    @param output {String} Encrypted file.
+    @param key {String} The password key.
     @example
         //dat://input.txt contains: Moscrif is the best cross-platform SDK.
         AES.fileEncrypt("dat://input.txt", "dat://output.txt", "password");
@@ -33,9 +33,9 @@ class AES
     /**
     This function decrypts file and save result to output file. If output file does not exist a new one is created.
     @method fileDecrypt
-    @param {String} input source file.
-    @param {String} output encrypted file.
-    @param {String} password key.
+    @param input {String} Source file.
+    @param output {String} Encrypted file.
+    @param pasword {String} The password key.
     @example
         //dat://output.txt contains crypted data in binary format
         AES.fileDecrypt("dat://output.txt", "dat://decrepted.txt", "password");

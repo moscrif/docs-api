@@ -1,8 +1,7 @@
 /**
-
 This class allows to manipulate local SQLite database.
 @class Database
-@module database
+@module sqlite
 @example
         // load database file
         var database = Database.open("dat://db.db");

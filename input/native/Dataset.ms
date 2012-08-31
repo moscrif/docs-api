@@ -1,8 +1,7 @@
 /**
-
 This class allows manipulate with data returns by SQLite database. This object can be create only by exec function from Database class.
 @class Dataset
-@module database
+@module sqlite
 @example
         // Returns object constructed from current row as { field1: value1, field2: value2, etc. }
         function Dataset.rowAsObject()

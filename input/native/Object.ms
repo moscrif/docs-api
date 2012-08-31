@@ -1,4 +1,3 @@
-
 /**
 Despite of its name Object is a class that contains methods of objects in script.
 @class Object
@@ -6,8 +5,8 @@ Despite of its name Object is a class that contains methods of objects in script
 @example
         var obj = { one:1, two:2 }; // creating object from literal
         // this line here will be evaluated to true:
-        if( obj instanceof Object )
-        console&lt;&lt;"I am an instance of Object" ; // will output this
+        if (obj instanceof Object)
+            console << "I am an instance of Object" ; // will output this
 */
 
 class Object
@@ -30,7 +29,7 @@ class Object
             }
 
             var instance = new Clazz();
-            var obj { };
+            var obj = { };
 
             // obj has "undefined" className
             assert obj.className == undefined;
@@ -38,7 +37,7 @@ class Object
             // instance has "Clazz" className
             assert instance.className == "Clazz";
     */
-    property className() { }
+    property className(v) { }
 
     /**
     Total number of members this instance contains.
@@ -46,7 +45,7 @@ class Object
     @type {Integer}
     @readOnly
     */
-    property length() { }
+    property length(v) { }
 
    /**
     Returns string "[object Object]".

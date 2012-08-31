@@ -1,8 +1,7 @@
 /**
-
 The Typeface class specifies the typeface and intrinsic style of a font. This is used in the paint, along with optionally algorithmic settings like textSize, textSkewX, textScaleX, kFakeBoldText_Mask, to specify how text appears when drawn (and measured).Typeface objects are immutable, and so they can be shared between threads.
 @class Typeface
-@module graphics
+@module core
 */
 class Typeface
 {

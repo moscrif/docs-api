@@ -1,8 +1,7 @@
 /**
-
 This class allows to create basic 3D transformations. This class calculates transformations and then apply them to the normal view object.
 @class View3D
-@module graphics
+@module core
 @example
         app.onDraw = function (sender, canvas)
         {

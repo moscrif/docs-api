@@ -1,9 +1,8 @@
 /**
-
 MaskFilter is the base class for object that perform transformations on an alpha-channel mask before drawing it. A subclass of MaskFilter may be installed into a Paint.
 Once there, each time a primitive is drawn, it is first scan converted into a #kA8_Format mask, and handed to the filter, calling its filterMask() method. If this returns true, then the new mask is used to render into the device.
 @class MaskFilter
-@module graphics
+@module core
 */
 class MaskFilter
 {

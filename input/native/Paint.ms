@@ -1,8 +1,7 @@
 /**
-
 The Paint class holds the style and color information about how to draw geometries, text and bitmaps.
 @class Paint
-@module graphics
+@module core
 */
 class Paint
 {

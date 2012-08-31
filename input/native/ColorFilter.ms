@@ -1,7 +1,7 @@
 /**
 Manages drawing of color in bitmap file. This object is usually set in Paint object.
 @class ColorFilter
-@module graphics
+@module core
 @example
         var paint = new Paint();
         // create color filter for grayscale images

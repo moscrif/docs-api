@@ -1,5 +1,4 @@
 /**
-
 Sensor class manages all operations with hardware sensors.
 @class Sensor
 @module sensor
