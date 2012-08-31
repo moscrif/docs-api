@@ -1,8 +1,7 @@
 /**
-
 A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.
 @class b2PolygonShape
-@module box2D
+@module box2d
 */
 class b2PolygonShape
 {

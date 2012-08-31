@@ -1,8 +1,7 @@
 /**
-
 A distance joint constrains two points on two bodies to remain at a fixed distance from each other.
 @class b2DistanceJoint
-@module box2D
+@module box2d
 @example
     this.bodyA = this.world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);
     this.bodyB = this.world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);

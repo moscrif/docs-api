@@ -1,8 +1,7 @@
 /**
-
 The world class manages all physics entities, dynamic simulation, and asynchronous queries. The world also contains efficient memory management facilities.
 @class b2World
-@module box2D
+@module box2d
 */
 class b2World
 {
@@ -10,12 +9,11 @@ class b2World
     /**
      Construct a world object.
     @method this
-    @param {Float} [xGravity=0] The world gravity on x axis. Default: 0 .
-    @param {Float} [yGravity=9.8] The world gravity on y axis. Default: 9.8 .
-    @param {Boolean} [doSleep] Improve performance by not simulating inactive bodies.
-    @param {Boolean} [enableCollisions] Enable collision between bodies.
+    @param [xGravity=0] {Float} The world gravity on x axis. Default: 0 .
+    @param [yGravity=9.8] {Float} The world gravity on y axis. Default: 9.8 .
+    @param [doSleep] {Boolean} Improve performance by not simulating inactive bodies.
+    @param [enableCollisions] {Boolean} Enable collision between bodies.
     @example
-
             var app = new Moscrif.Window();
             app.terminate = false;
             app.onStart = function()
@@ -63,9 +61,9 @@ class b2World
    /**
     Take a time step. This performs collision detection, integration, and constraint solution.
     @method step
-    @param {Float} [timeStep] The amount of time to simulate. When this function is called from onProcess event in Moscrif, the value is usually 1.0/40.0 .
-    @param {Integer} [velocityIterations] For the velocity constraint solver.
-    @param {Integer} [positionIterations] For the position constraint solver.
+    @param [timeStep] {Float} The amount of time to simulate. When this function is called from onProcess event in Moscrif, the value is usually 1.0/40.0 .
+    @param [velocityIterations] {Integer} For the velocity constraint solver.
+    @param [positionIterations] {Integer} For the position constraint solver.
     @example
         ....
         ....onStart = function()
@@ -102,7 +100,7 @@ class b2World
 
     /**
     Call this to redraw all objects in curent world.
-    @param {Integer} canvas Instance of canvas class into which world should be drawn.
+    @param canvas {Integer} Instance of canvas class into which world should be drawn.
     @method doDraw
     @example
         var app = new Moscrif.Window();
@@ -131,7 +129,7 @@ class b2World
 
    /**
     Call this to draw shapes and other debug draw data.
-    @param {Integer} canvas Instance of canvas class into which world should be drawn.
+    @param canvas {Integer} Instance of canvas class into which world should be drawn.
     @method doDebugDraw
     @example
         var app = new Moscrif.Window();
@@ -160,18 +158,18 @@ class b2World
 
   /**
     Create new box2d body and place it to the x, y.
-    @param {b2CircleShape} b2CircleShape Shape of new object.
-    @param {Symbol} bodyTypeSym BodyType's parameter .
+    @param b2CircleShape {b2CircleShape} Shape of new object.
+    @param bodyTypeSym {Symbol} BodyType's parameter .
 
     + #static - A static body has does not move under simulation and behaves as if it has infinite mass. Internally, Box2D stores zero for the mass and the inverse mass. Static bodies can be moved manually by the user. A static body has zero velocity. Static bodies do not collide with other static or kinematic bodies.
     + #dynamic - A dynamic body is fully simulated. They can be moved manually by the user, but normally they move according to forces. A dynamic body can collide with all body types. A dynamic body always has finite, non-zero mass. If you try to set the mass of a dynamic body to zero, it will automatically acquire a mass of one kilogram.
     + #kinematic - A kinematic body moves under simulation according to its velocity. Kinematic bodies do not respond to forces. They can be moved manually by the user, but normally a kinematic body is moved by setting its velocity. A kinematic body behaves as if it has infinite mass, however, Box2D stores zero for the mass and the inverse mass. Kinematic bodies do not collide with other static or kinematic bodies.
-    @param {Float} [density=1] Density 0 to 1.
-    @param {Float} [friction=0.3] Friction 0 to 1.
-    @param {Float} [bounce=0.2] Bounce 0 to 1.
-    @param {integer} [x=0.0] Position of object on x axis.
-    @param {integer} [y=0.0] Position of object on y axis.
-    @return {b2Body}  New instance of physics body interacting in the world.
+    @param [density=1] {Float} Density 0 to 1.
+    @param [friction=0.3] {Float} Friction 0 to 1.
+    @param [bounce=0.2] {Float} Bounce 0 to 1.
+    @param [x=0.0] {integer} Position of object on x axis.
+    @param [y=0.0] {integer} Position of object on y axis.
+    @return {b2Body} New instance of physics body interacting in the world.
     @method createBody
     @example
         var app = new Moscrif.Window();
@@ -200,19 +198,19 @@ class b2World
 
  /**
     Create distance joint between two objects. Distance joints says that the distance between two points on two bodies must be constant.
-    @param {b2Body} bodyA First body.
-    @param {b2Body} bodyB Second body.
-    @param {Float} anchorXA X position of anchor point on the first body. Anchor point is point on the body, which is conected with the second body.
-    @param {Float} anchorYA Y position of anchor point on the first body. Anchor point is point on the body, which is conected with the second body.
-    @param {Float} anchorXB X position of anchor point on the second body. Anchor point is point on the body, which is conected with the first body.
-    @param {Float} anchorYB Y position of anchor point on the second body. Anchor point is point on the body, which is conected with the first body.
-    @param {Array} scriptDef Other joints properties:
+    @param bodyA {b2Body} First body.
+    @param bodyB {b2Body} Second body.
+    @param anchorXA {Float} X position of anchor point on the first body. Anchor point is point on the body, which is conected with the second body.
+    @param anchorYA {Float} Y position of anchor point on the first body. Anchor point is point on the body, which is conected with the second body.
+    @param anchorXB {Float} X position of anchor point on the second body. Anchor point is point on the body, which is conected with the first body.
+    @param anchorYB {Float} Y position of anchor point on the second body. Anchor point is point on the body, which is conected with the first body.
+    @param scriptDef {Array} Other joints properties:
 
     + distanceLength - Default length between bodies (between anchor points).
     + frequencyHz - The mass-spring-damper frequency in Hertz. A value of 0 disables softness.
     + dampingRatio - The damping ratio from 0 to 1.
 
-    @param {Boolean} [collideConnected] If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
+    @param [collideConnected] {Boolean} If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
     @return {b2DistanceJoint}  New distance joint.
     @method createDistanceJoint
     @example
@@ -234,11 +232,11 @@ class b2World
 
  /**
     A revolute joint forces two bodies to share a common anchor point, often called a hinge point. The revolute joint has a single degree of freedom: the relative rotation of the two bodies. This is called the joint angle.
-    @param {b2Body} bodyA First body.
-    @param {b2Body} bodyB Second body.
-    @param {Float} anchorX X position of anchor point. Anchor point is point around which bodies are rotated.
-    @param {Float} anchorY Y position of anchor point. Anchor point is point around which bodies are rotated.
-    @param {Array} scriptDef Other joints properties (A joint limit forces the joint angle to remain between a lower and upper bound. The limit range should include zero, otherwise the joint will lurch when the simulation begins. Angle is positive when rotates CCW.)
+    @param bodyA {b2Body} First body.
+    @param bodyB {b2Body} Second body.
+    @param anchorX {Float} X position of anchor point. Anchor point is point around which bodies are rotated.
+    @param anchorY {Float} Y position of anchor point. Anchor point is point around which bodies are rotated.
+    @param scriptDef {Array} Other joints properties (A joint limit forces the joint angle to remain between a lower and upper bound. The limit range should include zero, otherwise the joint will lurch when the simulation begins. Angle is positive when rotates CCW.)
 
     + lowerAngle - The lower angle for the joint limit (radians).
     + upperAngle - The upper angle for the joint limit (radians).
@@ -247,7 +245,7 @@ class b2World
     + motorSpeed - The desired motor speed. Usually in radians per second.
     + enableMotor - True / false to enable the joint motor.
 
-    @param {Boolean} [collideConnected] If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
+    @param [collideConnected] {Boolean} If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
     @return {b2RevoluteJoint}  New revolute joint.
     @method createRevoluteJoint
     @example
@@ -266,16 +264,16 @@ class b2World
 
 /**
     The friction joint is used for top-down friction. The joint provides 2D translational friction and angular friction.
-    @param {b2Body} bodyA First body.
-    @param {b2Body} bodyB Second body.
-    @param {Float} anchorX X position of anchor point.
-    @param {Float} anchorY Y position of anchor point.
-    @param {Array} scriptDef Other joints properties:
+    @param bodyA {b2Body} First body.
+    @param bodyB {b2Body} Second body.
+    @param anchorX {Float} X position of anchor point.
+    @param anchorY {Float} Y position of anchor point.
+    @param scriptDef {Array} Other joints properties:
 
     + maxForce -  The maximum friction force in N.
     + maxTorque - The maximum friction torque in N-m.
 
-    @param {Boolean} [collideConnected] If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
+    @param [collideConnected] {Boolean} If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
     @return {b2FrictionJoint}  New friction joint.
     @method createFrictionJoint
     */
@@ -285,12 +283,12 @@ class b2World
 
 /**
     If you want to create a sophisticated mechanical contraption you might want to use gears. Gear joint connects two other types of joints and move them with set ratio.
-    @param {b2Body} bodyA First body.
-    @param {b2Body} bodyB Second body.
-    @param {Float} jojnt1 First joint.
-    @param {Float} jojnt2 Second joint.
-    @param {Float} ratio Ratio between both joints.
-    @param {Boolean} [collideConnected] If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
+    @param bodyA {b2Body} First body.
+    @param bodyB {b2Body} Second body.
+    @param jojnt1 {Float} First joint.
+    @param jojnt2 {Float} Second joint.
+    @param ratio {Float} Ratio between both joints.
+    @param [collideConnected] {Boolean} If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
     @return {b2GearJoint}  New friction joint.
     @method createGearJoint
     */
@@ -300,14 +298,14 @@ class b2World
 
 /**
     A prismatic joint allows for relative translation of two bodies along a specified axis. A prismatic joint prevents relative rotation. Therefore, a prismatic joint has a single degree of freedom.
-    @param {b2Body} bodyA First body.
-    @param {b2Body} bodyB Second body.
-    @param {Float} anchorX X position of anchor point. Anchor point is point on the body, which is conected with the second body.
-    @param {Float} anchorY Y position of anchor point. Anchor point is point on the body, which is conected with the second body.
-    @param {Float} axisX X coordinate of axis.
-    @param {Float} axisY Y coordinate of axis.
-    @param {Float} referenceAngle ReferenceAngle angle
-    @param {Array} scriptDef Other joints properties:
+    @param bodyA {b2Body} First body.
+    @param bodyB {b2Body} Second body.
+    @param anchorX {Float} X position of anchor point. Anchor point is point on the body, which is conected with the second body.
+    @param anchorY {Float} Y position of anchor point. Anchor point is point on the body, which is conected with the second body.
+    @param axisX {Float} X coordinate of axis.
+    @param axisY {Float} Y coordinate of axis.
+    @param referenceAngle {Float} ReferenceAngle angle
+    @param scriptDef {Array} Other joints properties:
 
     + lowerTranslation - The lower translation limit, usually in meters.
     + upperTranslation - The upper translation limit, usually in meters.
@@ -316,7 +314,7 @@ class b2World
     + motorSpeed - The desired motor speed in radians per second.
     + enableMotor - Enable/disable the joint motor.
 
-    @param {Boolean} [collideConnected] If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
+    @param [collideConnected] {Boolean} If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
     @return {b2PrismaticJoint}  New prismatic joint.
     @method createPrismaticJoint
     */
@@ -326,14 +324,14 @@ class b2World
 
 /**
     This joint provides two degrees of freedom: translation along an axis fixed in body1 and rotation in the plane. You can use a joint limit to restrict the range of motion and a joint motor to drive the motion or to model joint friction.
-    @param {b2Body} bodyA First body.
-    @param {b2Body} bodyB Second body.
-    @param {Float} anchorX X position of anchor point. Anchor point is point on the body, which is conected with the second body.
-    @param {Float} anchorY Y position of anchor point. Anchor point is point on the body, which is conected with the second body.
-    @param {Float} axisX X coordinate of axis.
-    @param {Float} axisY Y coordinate of axis.
-    @param {Float} referenceAngle ReferenceAngle angle
-    @param {Array} scriptDef Other joints properties:
+    @param bodyA {b2Body} First body.
+    @param bodyB {b2Body} Second body.
+    @param anchorX {Float} X position of anchor point. Anchor point is point on the body, which is conected with the second body.
+    @param anchorY {Float} Y position of anchor point. Anchor point is point on the body, which is conected with the second body.
+    @param axisX {Float} X coordinate of axis.
+    @param axisY {Float} Y coordinate of axis.
+    @param referenceAngle {Float} ReferenceAngle angle
+    @param scriptDef {Array} Other joints properties:
 
     + lowerTranslation - The lower translation limit, usually in meters.
     + upperTranslation - The upper translation limit, usually in meters.
@@ -342,7 +340,7 @@ class b2World
     + motorSpeed - The desired motor speed in radians per second.
     + enableMotor - Enable/disable the joint motor.
 
-    @param {Boolean} [collideConnected] If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
+    @param [collideConnected] {Boolean} If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
     @return {b2LineJoint}  New line joint.
     @method createLineJoint
     */
@@ -352,9 +350,9 @@ class b2World
 
 /**
     A mouse joint is used to make a point on a body track a specified world point. This a soft constraint with a maximum force. This allows the constraint to stretch and without applying huge forces.
-    @param {b2Body} bodyA First body.
-    @param {b2Body} bodyB Second body.
-    @param {Array} scriptDef Other joints properties:
+    @param bodyA {b2Body} First body.
+    @param bodyB {b2Body} Second body.
+    @param scriptDef {Array} Other joints properties:
 
     + maxForce - The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some multiple of the weight (multiplier * mass * gravity).
     + frequencyHz - The response speed.
@@ -362,7 +360,7 @@ class b2World
     + targetX - X coordinate of initial world target point. This is assumed to coincide with the body anchor initially.
     + targetY - Y coordinate of initial world target point. This is assumed to coincide with the body anchor initially.
 
-    @param {Boolean} [collideConnected] If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
+    @param [collideConnected] {Boolean} If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
     @return {b2MouseJoint}  New mouse joint.
     @method createMouseJoint
     @example
@@ -389,18 +387,18 @@ class b2World
 
     __Warning:__ the pulley joint can get a bit squirrelly by itself. They often work better when combined with prismatic joints. You should also cover the the anchor points with static shapes to prevent one side from going to zero length.
 
-    @param {b2Body} bodyA First body.
-    @param {b2Body} bodyB Second body.
-    @param {Float} groundAnchorAX X coordinatesof of the first ground anchor.
-    @param {Float} groundAnchorAY Y coordinatesof of the first ground anchor.
-    @param {Float} groundAnchorBX X coordinatesof of the second ground anchor.
-    @param {Float} groundAnchorBY Y coordinatesof of the second ground anchor.
-    @param {Float} anchorAX X world coordinate of the anchor point on bodyA.
-    @param {Float} anchorAY Y world coordinate of the anchor point on bodyA.
-    @param {Float} anchorBX X world coordinate of the anchor point on bodyB.
-    @param {Float} anchorBY Y world coordinate of the anchor point on bodyB.
-    @param {Float} ratio The pulley ratio.
-    @param {Boolean} [collideConnected] If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
+    @param bodyA {b2Body} First body.
+    @param bodyB {b2Body} Second body.
+    @param groundAnchorAX {Float} X coordinatesof of the first ground anchor.
+    @param groundAnchorAY {Float} Y coordinatesof of the first ground anchor.
+    @param groundAnchorBX {Float} X coordinatesof of the second ground anchor.
+    @param groundAnchorBY {Float} Y coordinatesof of the second ground anchor.
+    @param anchorAX {Float} X world coordinate of the anchor point on bodyA.
+    @param anchorAY {Float} Y world coordinate of the anchor point on bodyA.
+    @param anchorBX {Float} X world coordinate of the anchor point on bodyB.
+    @param anchorBY {Float} Y world coordinate of the anchor point on bodyB.
+    @param ratio {Float} The pulley ratio.
+    @param [collideConnected] {Boolean} If this param is true colisions between connected bodies are allowed, otherwise their are denied. Bytes default this param is set top false.
     @return {b2PulleyJoint}  New pulley joint.
     @method createPulleyJoint
     */
@@ -411,7 +409,7 @@ class b2World
 
 /**
     Destroy a joint.
-    @param {b2Joint} joint Joint to destroy.
+    @param joint {b2Joint} Joint to destroy.
     @method destroyJoint
     @example
         this.joint = this.world.createDistanceJoint(body, bodyB, xa, ya, xb, yb, def);
@@ -425,7 +423,7 @@ class b2World
 
 /**
     Destroy existing physics body.
-    @param {b2Body} body Body to destroy.
+    @param body {b2Body} Body to destroy.
     @method destroyBody
     @example
         this.body = this.world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);
@@ -439,7 +437,7 @@ class b2World
 
 /**
     Enable/disable warm starting. For testing.
-    @param {Boolean} flag  True / false to enable / disable.
+    @param flag {Boolean} True / false to enable / disable.
     @method setWarmStarting
     */
     function setWarmStarting(flag)
@@ -448,7 +446,7 @@ class b2World
 
 /**
     Enable/disable continuous physics. For testing.
-    @param {Boolean} flag  True / false to enable / disable.
+    @param flag {Boolean} True / false to enable / disable.
     @method setContinuousPhysics
     */
     function setContinuousPhysics(flag)
@@ -517,8 +515,8 @@ class b2World
 
 /**
     Set world’s gravity (separately for x and y axis).
-    @param {Float} gx  Gravity on x axis.
-    @param {Float} gy  Gravity on y axis.
+    @param gx {Float} Gravity on x axis.
+    @param gy {Float} Gravity on y axis.
     @method setGravity
     @example
         // create world
@@ -561,8 +559,8 @@ class b2World
     /**
     This function is called, when two bodies collide.
     @event scale
-    @param {b2World} sender  Object, which called this function.
-    @param {b2Contact} contact Instance of b2Contact contains all informations about contact.
+    @param sender {b2World} Object, which called this function.
+    @param contact {b2Contact} Instance of b2Contact contains all informations about contact.
     @example
         this.world.onBeginContact = function(sender, contact)
         {
@@ -577,8 +575,8 @@ class b2World
     /**
     This function is called, when contact ends.
     @event onEndContact
-    @param {b2World} sender  Object, which called this function.
-    @param {b2Contact} contact Instance of b2Contact contains all informations about contact.
+    @param sender {b2World} Object, which called this function.
+    @param contact {b2Contact} Instance of b2Contact contains all informations about contact.
     @example
         this.world.onEndContact = function(sender, contact)
         {

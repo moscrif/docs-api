@@ -1,8 +1,7 @@
 /**
-
 A revolute joint constrains two bodies to share a common point while they are free to rotate about the point. The relative rotation about the shared point is the joint angle. You can limit the relative rotation with a joint limit that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point. A maximum motor torque is provided so that infinite forces are not generated.
 @class b2RevoluteJoint
-@module box2D
+@module box2d
 */
 class b2RevoluteJoint
 {

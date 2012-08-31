@@ -1,8 +1,7 @@
 /**
-
 The class manages contact between two shapes. A contact exists for each overlapping AABB in the broad-phase (except if filtered). Therefore a contact object may exist that has no contact points.
 @class b2Contact
-@module box2D
+@module box2d
 */
 class b2Contact
 {

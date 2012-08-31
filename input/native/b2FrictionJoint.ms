@@ -1,8 +1,7 @@
 /**
-
 Friction joint. This is used for top-down friction. It provides 2D translational friction and angular friction.
 @class b2FrictionJoint
-@module box2D
+@module box2d
 */
 class b2FrictionJoint
 {

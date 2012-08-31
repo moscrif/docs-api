@@ -1,7 +1,6 @@
 /**
 This class manages different types of physical bodies with many different properties and behavior.
 @class b2Body
-
 @module box2d
 */
 class b2Body

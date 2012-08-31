@@ -1,8 +1,7 @@
 /**
-
 This class creates shape for circular physical bodies.
 @class b2CircleShape
-@module box2D
+@module box2d
 */
 class b2CircleShape
 {
