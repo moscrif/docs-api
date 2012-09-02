@@ -1,6 +1,7 @@
 /**
 
-This class provides the ability to play back sounds and music files on a device. By default, this class supports free formats like: wav, ogg and mod but most platforms support also other frequently used formats like mp3.
+This class provides the ability to play back sounds and music files on a device.
+    By default, this class supports free formats like: wav, ogg and mod but most platforms support also other frequently used formats like mp3.
 @class AudioPlayer
 
 @module media
@@ -28,7 +29,7 @@ class AudioPlayer
     function this() { }
 
     /**
-    Easy way to open file for playing.By default, following audio formats are supported:
+    Easy way to open file for playing. By default, following audio formats are supported:
 
                 .wav - is suitable for short sounds or effects in games or apps
                 .mod - is great format for simple game music because it is easy to CPU
@@ -77,7 +78,8 @@ class AudioPlayer
     function seek(percent) { }
 
     /**
-    Loop function determines, what happens after the song end. However, this function has to be used before play function.
+    Loop function determines, what happens after the song end.
+        However, this function has to be used before play function.
     @param percent {Boolean} If this parameter is set to true, the song will play again.
     @method loop
     @example

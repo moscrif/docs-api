@@ -3,8 +3,8 @@ Represents indexed vector (array) of values. The Array object is used to store m
 @class Array
 @example
         // An array can be defined in three ways.
+
         // 1.
-        
         var myCars=new Array();
         myCars[0]="Saab";
         myCars[1]="Volvo";
@@ -31,7 +31,7 @@ class Array
     function this([value1 [, value2 [, ... valueN]]]) { }
 
     /**
-    GetNext number of items in array.
+    Get number of items in array.
     @property length
     @type {Integer}
     @readOnly
@@ -45,6 +45,8 @@ class Array
     Refers to a particular element of the array at the index position. Index is zero-based.
     @property [index]
     @type {Object}
+        var myCars=new Array("Saab", "Volvo", "BMW");
+        console<<myCars[1]<<"\n";   // Volvo
     */
     property [index] { }
 
@@ -293,20 +295,6 @@ class Array
                 array is the array being scanned (reduced).
     @param [initialValue] {Object} InitialValue value
     @return {Array} New array with changed values.
-    @example
-        function square(currentValue, index, array)
-        {
-            // calculate square for every value
-            return currentValue * currentValue;
-        }
-        
-        var numbers = new Array(4,6,8);
-        // apply square function to all array items
-        var squared = numbers.map(square);
-        // get changed values
-        console<<squared.toString()<<"\n"; // 16,36,64
-        // original values in array numbers ​​are unchanged
-        console<<numbers.toString()<<"\n"; // 4,6,8
     **/
     function reduce(callback[, initialValue])
     {

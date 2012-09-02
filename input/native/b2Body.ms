@@ -7,31 +7,15 @@ class b2Body
 {
 
     /**
-    Construct new recorder class.
+    Set the position of the body's origin and rotation. This breaks any contacts and wakes the other bodies.
+    Manipulating a body's transform may cause non-physical behavior.
     @method setTransform
-    @param x {Float} The world x position of the body's local origin.
-    @param y {Float} The world y position of the body's local origin.
+    @param x {Float} The world x position of the body's local origin in box2d coordinates.
+    @param y {Float} The world y position of the body's local origin in box2d coordinates.
     @param angle {Float} The world rotation in radians.
     @example
-        body = this._world.createBody(shape, #dynamic, 0.9 , 0.3, 0.03);
-        body.setTransform(100, 50, 0.25*Math.PI);
-        
-        // draw body
-        body.onDraw = function(sender, g)
-        {
-            var (left, top) = sender.getPosition();
-            var angleRad = sender.getAngle();
-        
-            g.save();
-            g.translate(left, top);
-            g.rotate(-(angleRad * 180.0 / Math.PI)); // rad2deg
-        
-            var matrix = new Matrix();
-            matrix.preTranslate(0, 0).preRotate(0).preTranslate(-this super.img.width/2, -this super.img.height/2);
-            g.drawBitmapMatrix(this super.img, matrix);
-        
-            g.restore();
-        }
+        // place body to the b2world and rotate i
+        body.setTransform(5, 5, 45*Deg2Rad);
     */
     function setTransform(x, y, angle) { }
 
@@ -45,9 +29,10 @@ class b2Body
             var (x, y) = this.getPosition();
             var angleRad = this.getAngle();
             canvas.save();
+            // move and rotate canvas accoridng to body's position and rotation
             canvas.translate(x, y);
             canvas.rotate(-(angleRad * 180.0 / Math.PI)); // rad2deg
-        
+
             var paint = new Paint();
             paint.color = 0xff00ff00;
             canvas.drawRect(this super.bodyWidth / -2, this super.bodyHeight / -2, this super.bodyWidth / 2, this super.bodyHeight / 2, paint);
@@ -297,7 +282,7 @@ class b2Body
     function getLinearVelocityFromLocalPoint(x, y) { }
 
     /**
-    Set linear damping of the body.
+    Set linear damping of the body. Damping is different than friction because friction only occurs with contact. Damping is not a replacement for friction and these two effects should be used together.
     @method setLinearDamping
     @param damping {Float} Linear damping.
     @example
@@ -308,7 +293,7 @@ class b2Body
     function setLinearDamping(damping) { }
 
     /**
-    Get linear damping of the body.
+    Get linear damping of the body. Damping is different than friction because friction only occurs with contact. Damping is not a replacement for friction and these two effects should be used together.
     @method getLinearDamping
     @return {Float} Linear damping of the body.
     @example
@@ -320,7 +305,7 @@ class b2Body
 
 
     /**
-    Set angular damping of the body.
+    Set angular damping of the body. Damping is different than friction because friction only occurs with contact. Damping is not a replacement for friction and these two effects should be used together.
     @method setAngularDamping
     @param damping {Float} Angular damping.
     @example
@@ -331,7 +316,7 @@ class b2Body
     function setAngularDamping(damping) { }
 
     /**
-    Get angular damping of the body.
+    Get angular damping of the body. Damping is different than friction because friction only occurs with contact. Damping is not a replacement for friction and these two effects should be used together.
     @method getAngularDamping
     @return {Float} Angular damping of the body.
     */
@@ -349,7 +334,12 @@ class b2Body
     property bodyType() { }
 
     /**
-    Is this body treated like a bullet for continuous collision detection?
+    Flag to treat sprite like a bullet for continuous collision detection (CCD). If the sprite is set as a bullet CCD detect colisions also with dynamic bodies, otherwise it detect colisions only with static bodies.
+    What is CCD?
+    Continuous collision detection (also called CCD), is a box2d feature which ensures correct simulation of fast moving objects.
+    Some older physical engines do not supports CCD, what means that they calculate positions and colisions of bodies for every time step, what is called discrete simulation. However in discrete simulation rigid body can move long distance in time step. (If the body has sufficiently high speed, it can be  before time step few meters in front of the barrier and after time step it can be few meters behind the barrier.)  It caused that the fast moving body can move throw another body without detection of collision between these two bodies. This effect is called tunneling.
+    By default box2d uses CCD to prevent tunneling effect. CCD looks for all collisions between the position before and after time step. For every collision it calculates time of impact (TOI). On the next time step the body moves only to the next TOI and then wait for the rest of time step and does not move anymore during the time step. To ensure the best performace the CCD calculates contacts only between dynamic and static bodies (not between the dynamic bodies each other). However, onto dynamic bodies can be set CCD separately. If there is fast moving body, which hit other dynamic bodies, you can set the fast moving body’s property bullet to true to allows CCD onto it.
+    True to enable CCD on this body, false to disable it
     @property bullet
     @type {Boolean}
     */
@@ -385,7 +375,7 @@ class b2Body
 
     /**
     This function is called, when body needs to be redrawn.
-    @event onEndContact
+    @event onDraw
     @param sender {b2Body} Object, which called this function.
     @param canvas {Canvas} Canvas object, which provides ability to draw into the body.
     @example
@@ -402,6 +392,6 @@ class b2Body
             canvas.drawCircle(left.toInteger(), top.toInteger(), this super.radius, paint);
         }
     */
-    function onEndContact(sender, canvas) { }
+    function onDraw(sender, canvas) { }
 
 }
