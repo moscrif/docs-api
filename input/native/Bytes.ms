@@ -67,7 +67,6 @@ class Bytes
     Create new Bytes object, loads file into it and returns that object.
     @param filename {String} Name of file to open. If file does not exist function cause and error.
     @method load
-    @throw File not found
     @return {Bytes} Bytes object loaded from file
     */
     function load(filename) { }

@@ -59,11 +59,10 @@ class Bitmap
     function fromFile(file) { }
 
 /**
-     Loads image from byte array.
+    Loads image from byte array.
     @method fromBytes
     @param data {Bytes}  Byte array.
     @return {Bitmap} Returns Bitmap object, with loaded picture.
-    @throw Cannot decode image
     @example
             function loadImage ()
             {
