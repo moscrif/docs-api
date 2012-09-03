@@ -1,5 +1,6 @@
 /**
-The world class manages all physics entities, dynamic simulation, and asynchronous queries. The world also contains efficient memory management facilities.
+The world class manages all physics entities, dynamic simulation, and asynchronous queries.
+    The world also contains efficient memory management facilities.
 @class b2World
 @module box2d
 */
@@ -14,46 +15,46 @@ class b2World
     @param [doSleep] {Boolean} Improve performance by not simulating inactive bodies.
     @param [enableCollisions] {Boolean} Enable collision between bodies.
     @example
-            var app = new Moscrif.Window();
-            app.terminate = false;
-            app.onStart = function()
+        var app = new Moscrif.Window();
+        app.terminate = false;
+        app.onStart = function()
+        {
+            // create world
+            this._world = new b2World(0.0, -9.8);
+        
+            // load image, which should be drawen into the body
+            var bodyImg = Bitmap.fromFile("app://img.png");
+            // create shape of body
+            var shape = b2PolygonShape.fromRect(bodyImg.width, bodyImg.height);
+        
+            // create body
+            var body = this._world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);
+            // draw body
+            body.onDraw = function(sender, canvas)
             {
-                // create world
-                this._world = new b2World(0.0, -9.8);
-            
-                // load image, which should be drawen into the body
-                var bodyImg = Bitmap.fromFile("app://img.png");
-                // create shape of body
-                var shape = b2PolygonShape.fromRect(bodyImg.width, bodyImg.height);
-            
-                // create body
-                var body = this._world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);
-                // draw body
-                body.onDraw = function(sender, canvas)
-                {
-                    var (l, t) = this.getPosition();
-                    canvas.drawBitmap(bodyImg, l.toInteger(), t.toInteger());
-                }
+                var (l, t) = this.getPosition();
+                canvas.drawBitmap(bodyImg, l.toInteger(), t.toInteger());
             }
-            
-            app.onProcess = function(sender)
-            {
-                // recalculate world
-                this._world.step(1.0/40.0, 4, 8);
-                // redraw window
-                this.invalidate();
-                return this.terminate ? 0 : 1;
-            }
-    
-            app.onDraw = function(sender, canvas)
-            {
-                // clear body
-                canvas.clear(0xff000000);
-                // draw b2 world
-                this._world.doDraw(canvas);
-            }
-            
-            app.init().run();
+        }
+        
+        app.onProcess = function(sender)
+        {
+            // recalculate world
+            this._world.step(1.0/40.0, 4, 8);
+            // redraw window
+            this.invalidate();
+            return this.terminate ? 0 : 1;
+        }
+        
+        app.onDraw = function(sender, canvas)
+        {
+            // clear body
+            canvas.clear(0xff000000);
+            // draw b2 world
+            this._world.doDraw(canvas);
+        }
+        
+        app.init().run();
     */
     function this([xGravity=0 [,yGravity[,doSleep[,enableCollisions]]]]) { }
 
@@ -99,7 +100,7 @@ class b2World
     }
 
     /**
-    Call this to redraw all objects in curent world.
+    Call this to redraw all objects in the world.
     @param canvas {Integer} Instance of canvas class into which world should be drawn.
     @method doDraw
     @example
@@ -123,7 +124,7 @@ class b2World
         
         app.init().run();
     */
-    function ddoDraw(canvas)
+    function doDraw(canvas)
     {
     }
 
@@ -171,28 +172,8 @@ class b2World
     @param [y=0.0] {integer} Position of object on y axis.
     @return {b2Body} New instance of physics body interacting in the world.
     @method createBody
-    @example
-        var app = new Moscrif.Window();
-        app.terminate = false;
-        
-        ....onStart = function()
-        {
-            // create world
-            this._world = new b2World();
-
-        }
-        
-        ....onDraw = function(sender, canvas)
-        {
-            // clear body
-            canvas.clear(0xff000000);
-            // draw b2 world
-            this._world.doDebugDraw(canvas);
-        }
-        
-        app.init().run();
     */
-    function createBody(shape, [bodyTypeSym, density, friction, bounce, x, y])
+    function createBody(shape, bodyTypeSym[, density, friction, bounce, x, y])
     {
     }
 
@@ -214,17 +195,17 @@ class b2World
     @return {b2DistanceJoint}  New distance joint.
     @method createDistanceJoint
     @example
-            this.bodyA = this.world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);
-            this.bodyB = this.world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);
-            
-            var def =
-            {
-                dampingRatio: 0.5; //from 0 to 1
-            };
-            var (xa, ya) = this.bodyA.getWorldCenter();
-            var (xb, yb) = this.bodyB.getWorldCenter();
-            
-            this.joint = this.world.createDistanceJoint(this.bodyA, this.bodyB, xa, ya, xb, yb, def);
+        this.bodyA = this.world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);
+        this.bodyB = this.world.createBody(shape, #dynamic, 1, 1, 1, 50, 20);
+        
+        var def =
+        {
+            dampingRatio: 0.5; //from 0 to 1
+        };
+        var (xa, ya) = this.bodyA.getWorldCenter();
+        var (xb, yb) = this.bodyB.getWorldCenter();
+        
+        this.joint = this.world.createDistanceJoint(this.bodyA, this.bodyB, xa, ya, xb, yb, def);
     */
     function createDistanceJoint(bodyA, bodyB, anchorXA, anchorYA, anchorXB, anchorYB, scriptDef[, collideConnected])
     {
@@ -409,6 +390,7 @@ class b2World
 
 /**
     Destroy a joint.
+    WARNING: The joints should not be removed in {{#crossLink "PhysicsScene/onBeginContact"}}{{/crossLink}} and {{#crossLink "PhysicsScene/onEndContact"}}{{/crossLink}}. Probably the better way is to remove it in {{#crossLink "Game/onProcess"}}{{/crossLink}} event.
     @param joint {b2Joint} Joint to destroy.
     @method destroyJoint
     @example
@@ -423,6 +405,7 @@ class b2World
 
 /**
     Destroy existing physics body.
+    WARNING: The bodies should not be removed in {{#crossLink "PhysicsScene/onBeginContact"}}{{/crossLink}} and {{#crossLink "PhysicsScene/onEndContact"}}{{/crossLink}}. Probably the better way is to remove it in {{#crossLink "Game/onProcess"}}{{/crossLink}} event.
     @param body {b2Body} Body to destroy.
     @method destroyBody
     @example
@@ -436,7 +419,8 @@ class b2World
     }
 
 /**
-    Enable/disable warm starting. For testing.
+    Enable/disable warm starting.  If the warm starting is enabled some box2d solvers uses resoul from previous time step, what improves performance.
+    
     @param flag {Boolean} True / false to enable / disable.
     @method setWarmStarting
     */
@@ -446,6 +430,9 @@ class b2World
 
 /**
     Enable/disable continuous physics. For testing.
+    Continuous collision detection (also called CCD), is a box2d feature which ensures correct simulation of fast moving objects.
+    Some older physical engines do not supports CCD, what means that they calculate positions and colisions of bodies for every time step, what is called discrete simulation. However in discrete simulation rigid body can move long distance in time step. (If the body has sufficiently high speed, it can be  before time step few meters in front of the barrier and after time step it can be few meters behind the barrier.)  It caused that the fast moving body can move throw another body without detection of collision between these two bodies. This effect is called tunneling.
+    By default box2d uses CCD to prevent tunneling effect. CCD looks for all collisions between the position before and after time step. For every collision it calculates time of impact (TOI). On the next time step the body moves only to the next TOI and then wait for the rest of time step and does not move anymore during the time step. To ensure the best performace the CCD calculates contacts only between dynamic and static bodies (not between the dynamic bodies each other). However, onto dynamic bodies can be set CCD separately. If there is fast moving body, which hit other dynamic bodies, you can set the fast moving body’s property bullet to true to allows CCD onto it.
     @param flag {Boolean} True / false to enable / disable.
     @method setContinuousPhysics
     */
@@ -551,14 +538,29 @@ class b2World
 
     /**
     Value represent scale of box2d world against screen resolution.
+        The width of the physics world is always 10 meters. I means that on different displays the world is scaled diferently.
+        The scale property says how meny pixels on the screens represents one meter in physical simulation.
+        It helps to convert screen coordinates to box2d coordinates, which also do not start from the left top corner as a screen pixels coordinates, but from the left bottom corner of the screen.
     @property scale
     @type {Float}
+    @example
+        // converts x-coord from screen to box2d
+        function x2box2d(x)
+        {
+            return x / this._world.scale;
+        }
+    
+        // converts y-coord from screen to box2d
+        function y2box2d(y)
+        {
+            return (System.height - y) / this._world.scale;
+        }
     */
     property scale() { }
 
     /**
     This function is called, when two bodies collide.
-    @event scale
+    @event onBeginContact
     @param sender {b2World} Object, which called this function.
     @param contact {b2Contact} Instance of b2Contact contains all informations about contact.
     @example

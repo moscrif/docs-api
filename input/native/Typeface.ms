@@ -7,7 +7,7 @@ class Typeface
 {
 
     /**
-    Typeface's intrinsic style attributes.
+    Typeface's style attributes.
 
     * #normal
     * #bold
@@ -56,11 +56,11 @@ class Typeface
     @method fromName
     @return {Typeface} A new reference to the typeface that most closely matches the requested familyName and style (never returns null).
     @example
-            // create paint object for text
-            var paint = new Paint();
-            paint.textSize = 40;
-            // set diferent font
-            paint.typeface = Typeface.fromName("FreeMono", #bold+italic);
+        // create paint object for text
+        var paint = new Paint();
+        paint.textSize = 40;
+        // set diferent font
+        paint.typeface = Typeface.fromName("FreeMono", #bold+italic);
     */
     function fromName(familyName, style) { }
 

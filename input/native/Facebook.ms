@@ -6,7 +6,8 @@ retrieves stati, friends etc.
 */
 class Facebook
 {
-    /** Contructs new Facebook client.
+    /**
+    Contructs new Facebook client.
     @method this
     @param appId="" {String} The Facebook application identifier.
     @param permissions=null {Array} The list of strings of required permissions.
@@ -18,6 +19,7 @@ class Facebook
     /**
     Returns true when Facebook Connect is supported, otherwise false.
     @method isAvailable
+    @chainable
     @static
     */
     function isAvailable() { }
@@ -25,18 +27,21 @@ class Facebook
     /**
     Prompts the user to login to Facebook.
     @method login
+    @chainable
     */
     function login() { }
 
     /**
     Logs out user from Facebook Connect.
     @method logout
+    @chainable
     */
     function logout() { }
 
     /**
     Get or post data to the logged in Facebook account.
     @method request
+    @chainable
     @param path {String}
     @param method=#get {Symbol} HTTP method, can be #get or #post.
     @param params=null {Object} JSON object to be sent to Facebook.
@@ -51,10 +56,15 @@ class Facebook
     function request(path, method = #get, params = null) { }
 
     /**
-    Displays a Facebook UI dialog for publishing posts to a user's stream. This is very easy way to post any data to user's wall.
+    Displays a Facebook UI dialog for publishing posts to a user's stream.
+    This is very easy way to post any data to user's wall.
+    @chainable
     @method dialog
+    @param path {String}
+    @param [params=null] {Object} JSON object to be sent to Facebook.
+        For more information visit [Facebook Graph API](http://developers.facebook.com/docs/reference/api/post/).
     */
-    function dialog() { }
+    function dialog(path, params = null) { }
 
     /**
     Called when the user has been successfully logged in.

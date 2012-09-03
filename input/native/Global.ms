@@ -3,12 +3,12 @@ Following functions and variables that "live" in global namespace so they access
 @class Global
 @module core
 @example
-        var r = eval("348.0 / 23.7");
-        console << r << "\n";
+    // execute a surce code
+    var r = eval("348.0 / 23.7");
+    console << r << "\n";
 */
 class Global
 {
-
     /**
     Standard input/output stream. Intended to use for debugging purposes.
     @attribute console
@@ -32,11 +32,11 @@ class Global
     @param [env] {Object} Is an environment object - if provided then script execution takes place in the namespace of that object..
     @return {Object} Value of the input
     @example
-            //Example: after execution of the following:
-            var obj = eval("({ one:1, two:2 })");
-            variable obj now contains object having two fields: one and two.
-            var res = eval("one + two;", obj);
-            //After execution of two lines above variable res will contain integer 3.
+        //Example: after execution of the following:
+        var obj = eval("({ one:1, two:2 })");
+        variable obj now contains object having two fields: one and two.
+        var res = eval("one + two;", obj);
+        //After execution of two lines above variable res will contain integer 3.
     */
     function eval(input[, env]) { }
 
@@ -48,14 +48,14 @@ class Global
     @param input {String|Stream} String or stream object, containing source code to parse
     @return {Object} Value of the input
     @example
-            //Example 1: after execution of the following:
-            var obj = parseValue("{ one:1, two:2 }");
-            //variable obj will contain object having two fields: one and two.
+        //Example 1: after execution of the following:
+        var obj = parseValue("{ one:1, two:2 }");
+        //variable obj will contain object having two fields: one and two.
 
-            //Example 2: after execution of the following:
-            var v = parseValuel("3.1415926");
+        //Example 2: after execution of the following:
+        var v = parseValuel("3.1415926");
 
-            //variable v will contain float number 3.1415926 - parsed value of the string.
+        //variable v will contain float number 3.1415926 - parsed value of the string.
     */
     function parseData(input) { }
 
@@ -65,15 +65,6 @@ class Global
     @param file {String|Stream} String - file name or Stream object for output file.
     @param value {Object} Value to store.
     @return {Boolean} true if data was stored successfully
-    @example
-            //Example 1: after execution of the following:
-            var obj = parseValue("{ one:1, two:2 }");
-            //variable obj will contain object having two fields: one and two.
-
-            //Example 2: after execution of the following:
-            var v = parseValuel("3.1415926");
-
-            //variable v will contain float number 3.1415926 - parsed value of the string.
     */
     function store(file, value) { }
 
@@ -137,21 +128,21 @@ class Global
     1. ext -  string, extension
     1. name_ext - string, filename with extension.
     @example
-            crackUrl("http://public:moscrif@mothiva.com:8443/svn").show();
-            // displays
-            Class Object: [object Class]
-                Properties:
-                    params: ""
-                    dir: ""
-                    ext: ""
-                    port: 8443
-                    name_ext: "/svn"
-                    protocol: "http"
-                    name: "/svn"
-                    hostname: "mothiva.com"
-                    anchor: ""
-                    username: "public"
-                    password: "mothiva.com:8443"
+        crackUrl("http://public:moscrif@mothiva.com:8443/svn").show();
+        // displays
+        Class Object: [object Class]
+            Properties:
+                params: ""
+                dir: ""
+                ext: ""
+                port: 8443
+                name_ext: "/svn"
+                protocol: "http"
+                name: "/svn"
+                hostname: "mothiva.com"
+                anchor: ""
+                username: "public"
+                password: "mothiva.com:8443"
     */
     function crackUrl(url) { }
 

@@ -39,8 +39,8 @@ class Sensor
     * #tilt
     @return {Boolean} True if sensor is available on the device. Otherwise it returns false.
     @example
-            if (!Sensor.isAvailable(#acceleration))
-                System.messageBox("No accelometer detected!");
+        if (!Sensor.isAvailable(#acceleration))
+            System.messageBox("No accelometer detected!");
     */
     function isAvailable(type) { }
 
@@ -48,13 +48,13 @@ class Sensor
     This function starts sending data from sensor. When new data are available, object calls callback functions.
     @method start
     @example
-            var sensor = new Sensor(#acceleration, 40);
-            // setup handler for receiving data
-            sensor.onDataReceived = function(sender, timestamp, params) {
-                var (x, y, z) = (params[0], params[1], params[2]);
-            };
-            // start receiving data
-            sensor.start();
+        var sensor = new Sensor(#acceleration, 40);
+        // setup handler for receiving data
+        sensor.onDataReceived = function(sender, timestamp, params) {
+            var (x, y, z) = (params[0], params[1], params[2]);
+        };
+        // start receiving data
+        sensor.start();
     */
     function start() { }
 
@@ -82,13 +82,13 @@ class Sensor
     @param params {Array} Data from sensor. Usually three values, except proximity sensor. Proximity sensor returns only one value in the array.
     @event onDataReceived
     @example
-            var sensor = new Sensor(#acceleration, 40);
-            // setup handler for receiving data
-            sensor.onDataReceived = function(sender, timestamp, params) {
-                var (x, y, z) = (params[0], params[1], params[2]);
-            };
-            // start receiving data
-            sensor.start();
+        var sensor = new Sensor(#acceleration, 40);
+        // setup handler for receiving data
+        sensor.onDataReceived = function(sender, timestamp, params) {
+            var (x, y, z) = (params[0], params[1], params[2]);
+        };
+        // start receiving data
+        sensor.start();
     */
     function onDataReceived(timestamp, params) { }
 

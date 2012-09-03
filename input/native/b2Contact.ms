@@ -1,7 +1,22 @@
 /**
 The class manages contact between two shapes. A contact exists for each overlapping AABB in the broad-phase (except if filtered). Therefore a contact object may exist that has no contact points.
+An instance of this class is automatically created as a parameter of {{#crossLink "PhysicsScene/onBeginContact"}}{{/crossLink}} and {{#crossLink "PhysicsScene/onEndContact"}}{{/crossLink}} event.
 @class b2Contact
 @module box2d
+@example
+    this.onBeginContact = function(contact)
+    {
+        // get the first contact
+        var current = contact;
+        while (current) {
+            // get the bodies in the contact
+            var bodyA = current.getBodyA();
+            var bodyB = current.getBodyB();
+            ...
+            // get the next contact (they can be more contacts during the one step)
+            current = current.getNext();
+        }
+    }
 */
 class b2Contact
 {
@@ -9,11 +24,10 @@ class b2Contact
     /**
     Get the next contact in the world's contact list.
     @method getNext
-    @param radius {Float} Body radius.
     @return {b2Contact} Next contact in the list or null if no other is available.
     @example
         // handle all current contacts in the world
-        this._world.onBeginContact = function(sender, contact)
+        ....onBeginContact = function(contact)
         {
             // set first contact to current
             var current = contact;
@@ -28,7 +42,7 @@ class b2Contact
             }
         };
     */
-    function getNext(radius) { }
+    function getNext() { }
 
     /**
     Get the first body in the contact.
@@ -67,9 +81,6 @@ class b2Contact
     @property enabled
     @type {Boolean}
     @readOnly
-    @example
-        var myCars=new Array("Saab", "Volvo", "BMW");
-        console<<myCars.length<<"\n";  // 3
     */
     property enabled() { }
 
@@ -122,6 +133,4 @@ class b2Contact
     @type {Float}
     */
     property restitutionB() { }
-
-
 }

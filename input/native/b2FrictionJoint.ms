@@ -1,7 +1,9 @@
 /**
 Friction joint. This is used for top-down friction. It provides 2D translational friction and angular friction.
+An instance of this class is created by {{#crossLink "PhysicsScene/createFrictionJoint"}}{{/crossLink}}
 @class b2FrictionJoint
 @module box2d
+
 */
 class b2FrictionJoint
 {
@@ -19,7 +21,4 @@ class b2FrictionJoint
     @type {Float}
     */
     property maxTorque() { }
-
-
-
 }

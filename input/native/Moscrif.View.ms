@@ -3,16 +3,16 @@ This class defines controls, which are components with visual representation.
 @class View
 @module ui
 @example
-        var btnView = new Moscrif.View("button");
-        btnView.width = 150;
-        btnView.height = 150;
-        btnView.top = 100;
-        btnView.left = 100;
-        btnView.onDraw = function(s, c)
-        {
-            ......
-        }
-        app.add(btnView);
+    var btnView = new Moscrif.View("button");
+    btnView.width = 150;
+    btnView.height = 150;
+    btnView.top = 100;
+    btnView.left = 100;
+    btnView.onDraw = function(s, c)
+    {
+        ......
+    }
+    app.add(btnView);
 */
 class Moscrif.View
 {
@@ -33,18 +33,19 @@ class Moscrif.View
     @param [right] {Boolean} Right border of the rectangle to be invalidated.
     @param [bottom] {Boolean} Bottom border of the rectangle to be invalidated.
     @example
-            container = new Moscrif.View("container");
-            ….
-            app.add(container);
-            ….
-            // redraw top half of view
-            container.invalidate(0, 0, System.width, System.height / 2);
+        container = new Moscrif.View("container");
+        ….
+        app.add(container);
+        ….
+        // redraw top half of view
+        container.invalidate(0, 0, System.width, System.height / 2);
     */
     function invalidate([left, top, right, bottom]) { }
 
     /**
     Function adds existing view object into ScrollView.
     @method add
+    @chainable
     @param view {View} View to add. View/ScrollView/TextView are supported.
     @param [order] {Symbol} Default is.
 
@@ -52,17 +53,17 @@ class Moscrif.View
             * #back
     @return {View} Return instance of itself.
     @example
-            var container = new Moscrif.View("container");
-            ... width, height, onDraw ...
-            app.add(container);
+        var container = new Moscrif.View("container");
+        ... width, height, onDraw ...
+        app.add(container);
 
-            var itemA = new Moscrif.View("itemA");
-            ... width, height (60), top (0), onDraw ...
-            container.add(itemA);
+        var itemA = new Moscrif.View("itemA");
+        ... width, height (60), top (0), onDraw ...
+        container.add(itemA);
 
-            var itemB = new Moscrif.View("itemB");
-            ... width, height (60), top (60), onDraw ...
-            container.add(itemB);
+        var itemB = new Moscrif.View("itemB");
+        ... width, height (60), top (60), onDraw ...
+        container.add(itemB);
     */
     function add(view [, order]) { }
 
@@ -86,18 +87,18 @@ class Moscrif.View
     @param name {String} Name of the child view to search
     @return {View} Instance of found child view, or null if not found.
     @example
-            var container = new Moscrif.View("container");
-            
-            var itemA = new Moscrif.View("itemA");
-            container.add(itemA);
-            
-            var itemB = new Moscrif.View("itemB");
-            container.add(itemB);
-            …...
-            // find view by name
-            var item = container.find("itemA");
-            // detach them
-            item.detach();
+        var container = new Moscrif.View("container");
+        
+        var itemA = new Moscrif.View("itemA");
+        container.add(itemA);
+        
+        var itemB = new Moscrif.View("itemB");
+        container.add(itemB);
+        …...
+        // find view by name
+        var item = container.find("itemA");
+        // detach them
+        item.detach();
     */
     function find(name) { }
 
@@ -120,17 +121,17 @@ class Moscrif.View
     @method suspendLayout
     @return {Window}
     @example
-            var container = new Moscrif.View("container");
-               
-            // suspend layout before adding a large number of components to ensure better performance
-            container.suspendLayout();
-            for (var i = 0; i&lt;NUM_OF_ITEMS; i++) {
-                var item = new Moscrif.View("item_" + i);
-                …. width, heigh, onDraw (left, top is managed by layout)...
-                container.add(item);
-            }
-            // resume layout
-            container.resumeLayout()
+        var container = new Moscrif.View("container");
+           
+        // suspend layout before adding a large number of components to ensure better performance
+        container.suspendLayout();
+        for (var i = 0; i&lt;NUM_OF_ITEMS; i++) {
+            var item = new Moscrif.View("item_" + i);
+            …. width, heigh, onDraw (left, top is managed by layout)...
+            container.add(item);
+        }
+        // resume layout
+        container.resumeLayout()
     */
     function suspendLayout() { }
 
@@ -138,25 +139,26 @@ class Moscrif.View
     /**
     Resume layer's recalculating.
     @method resumeLayout
-    @return {Window}
+    @chainable
     @example
-            var container = new Moscrif.View("container");
-            
-            // suspend layout before adding a large number of components to ensure better performance
-            container.suspendLayout();
-            for (var i = 0; i&lt;NUM_OF_ITEMS; i++) {
-                var item = new Moscrif.View("item_" + i);
-                …. width, heigh, onDraw (left, top is managed by layout)...
-                container.add(item);
-            }
-            // resume layout
-            container.resumeLayout();
+        var container = new Moscrif.View("container");
+
+        // suspend layout before adding a large number of components to ensure better performance
+        container.suspendLayout();
+        for (var i = 0; i&lt;NUM_OF_ITEMS; i++) {
+            var item = new Moscrif.View("item_" + i);
+            …. width, heigh, onDraw (left, top is managed by layout)...
+            container.add(item);
+        }
+        // resume layout
+        container.resumeLayout();
     */
     function resumeLayout() { }
 
     /**
     Performs (force) layout calculations.
     @method performLayout
+    @chainable
     @return {Window}
     */
     function performLayout() { }
@@ -164,6 +166,7 @@ class Moscrif.View
    /**
     Suspends the drawing of this view.
     @method suspendDrawing
+    @chainable
     @return {Window}
     */
     function suspendDrawing() { }
@@ -185,19 +188,20 @@ class Moscrif.View
    /**
     Remove this view form it's parent.
     @method detach
+    @chainable
     @example
-            var container = new Moscrif.View("container");
-            
-            var itemA = new Moscrif.View("itemA");
-            container.add(itemA);
-            
-            var itemB = new Moscrif.View("itemB");
-            container.add(itemB);
-            …...
-            // find view by name
-            var item = container.find("itemA");
-            // detach them
-            item.detach();
+        var container = new Moscrif.View("container");
+        
+        var itemA = new Moscrif.View("itemA");
+        container.add(itemA);
+        
+        var itemB = new Moscrif.View("itemB");
+        container.add(itemB);
+        …...
+        // find view by name
+        var item = container.find("itemA");
+        // detach them
+        item.detach();
     */
     function detach() { }
 

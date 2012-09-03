@@ -3,37 +3,37 @@ This class allows to perform web methods.
 @class WebClient
 @module net
 @example
-        const SERVER = "www.example.com";
-        const PORT = 80;    // for http protocol
-        
-        this.web = new WebClient();
-        this.web.open(SERVER, PORT, false, "");
-        this.web.onError = function(sender)
-        {
-            System.messageBox("An error occurred!");
-        }
-        
-        this.web.onReceiving = function(sender, received, total)
-        {
-            console&lt;&lt;"downloaded " + received + "B.\n";
-        }
-        
-        this.web.onReceived = function(sender)
-        {
-            // to decode text use:
-            System.messageBox("received: " + this.data.toString("utf8"));
-            // to decode image file use:
-            this super.img = Bitmap.fromBytes(this.data);
-            app.invalidate();
-        
-        }
-        
-        this.web.onCancel = function(sender)
-        {
-            System.messageBox("Downloading canceled!");
-        }
-        
-        this.web.getData("/getdata/anyscript");
+    const SERVER = "www.example.com";
+    const PORT = 80;    // for http protocol
+    
+    this.web = new WebClient();
+    this.web.open(SERVER, PORT, false, "");
+    this.web.onError = function(sender)
+    {
+        System.messageBox("An error occurred!");
+    }
+    
+    this.web.onReceiving = function(sender, received, total)
+    {
+        console&lt;&lt;"downloaded " + received + "B.\n";
+    }
+    
+    this.web.onReceived = function(sender)
+    {
+        // to decode text use:
+        System.messageBox("received: " + this.data.toString("utf8"));
+        // to decode image file use:
+        this super.img = Bitmap.fromBytes(this.data);
+        app.invalidate();
+    
+    }
+    
+    this.web.onCancel = function(sender)
+    {
+        System.messageBox("Downloading canceled!");
+    }
+
+    this.web.getData("/getdata/anyscript");
 */
 class WebClient
 {
@@ -63,8 +63,8 @@ class WebClient
     @param useSSL=false {Boolean} Specifies if the web object uses SSL or not, the default is false.
     @param [proxy] {String} Determines the proxy server, the default is none.
     @example
-            this.web = new WebClient();
-            this.web.open(SERVER, PORT, false, "");
+        this.web = new WebClient();
+        this.web.open(SERVER, PORT, false, "");
     */
     function open(host, port = 80, useSSL = false [, proxy]){}
 
@@ -80,9 +80,9 @@ class WebClient
     @param resource {String} Server resource file.
     @param [responseToFile] {String} Destination location.
     @example
-            this.web = new WebClient();
-            this.web.open(SERVER, PORT, false, "");
-            this.web.getData("/getdata/anyscript");
+        this.web = new WebClient();
+        this.web.open(SERVER, PORT, false, "");
+        this.web.getData("/getdata/anyscript");
     */
     function getData(resource [, responseToFile]){}
 
@@ -93,9 +93,9 @@ class WebClient
     @param data {Bytes|String} Data to send. Byte of array or text string
     @param [responseToFile] {String} Location of file, where response would be saved.
     @example
-            this.web = new WebClient();
-            this.web.open(SERVER, PORT, false, "");
-            web.postData("/import.php", data);
+        this.web = new WebClient();
+        this.web.open(SERVER, PORT, false, "");
+        web.postData("/import.php", data);
     */
     function postData(resource, data [, responseToFile]){}
 
@@ -106,9 +106,9 @@ class WebClient
     @param fileToPost {String} Path to the file to send.
     @param [responseToFile] {String} Location of file, where response would be saved.
     @example
-            this.web = new WebClient();
-            this.web.open(SERVER, PORT, false, "");
-            web.postData("/import.php", data);
+        this.web = new WebClient();
+        this.web.open(SERVER, PORT, false, "");
+        web.postData("/import.php", data);
     */
     function postFile(resource, fileToPost [, responseToFile]){}
 
@@ -121,7 +121,7 @@ class WebClient
     property host(){}
 
     /**
-     Port number.
+    Port number.
     @property port
     @type {Integer}
     @readOnly
@@ -172,13 +172,13 @@ class WebClient
     Callback which is called when an error appears.
     @event onError
     @example
-            this.web = new WebClient();
-            this.web.open(SERVER, PORT, false, "");
-            this.web.onError = function(sender)
-            {
-                    System.messageBox("An error occurred!");
-            }
-            this.web.getData("/getdata/anyscript");
+        this.web = new WebClient();
+        this.web.open(SERVER, PORT, false, "");
+        this.web.onError = function(sender)
+        {
+                System.messageBox("An error occurred!");
+        }
+        this.web.getData("/getdata/anyscript");
     */
     property onError(){}
 
@@ -186,17 +186,17 @@ class WebClient
     Callback function which is called when new data has been received.
     @event onReceived
     @example
-             this.web = new WebClient();
-             this.web.open(SERVER, PORT, false, "");
-             this.web.onReceived = function(sender)
-             {
-                    // to decode text use:
-                    System.messageBox("received: " + this.data.toString("utf8"));
-                    // to decode image file use:
-                    this super.img = Bitmap.fromBytes(this.data);
-                    app.invalidate();
-             }
-            this.web.getData("/getdata/anyscript");
+         this.web = new WebClient();
+         this.web.open(SERVER, PORT, false, "");
+         this.web.onReceived = function(sender)
+         {
+                // to decode text use:
+                System.messageBox("received: " + this.data.toString("utf8"));
+                // to decode image file use:
+                this super.img = Bitmap.fromBytes(this.data);
+                app.invalidate();
+         }
+        this.web.getData("/getdata/anyscript");
     */
     property onReceived(){}
 
@@ -206,13 +206,13 @@ class WebClient
     @param bytesTotal {Integer} Number of all bytes to receive, can be zero (depends on server).
     @event onReceiving
     @example
-            his.web = new WebClient();
-            this.web.open(SERVER, PORT, false, "");
-             this.web.onReceiving = function(sender, received, total)
-             {
-                    console<<"downloaded " + received + "B.\n";
-             }
-            this.web.getData("/getdata/anyscript");
+        this.web = new WebClient();
+        this.web.open(SERVER, PORT, false, "");
+        this.web.onReceiving = function(sender, received, total)
+        {
+            console<<"downloaded " + received + "B.\n";
+        }
+        this.web.getData("/getdata/anyscript");
     */
     property onReceiving(bytes, bytesTotal){}
 

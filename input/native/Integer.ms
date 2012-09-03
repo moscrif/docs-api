@@ -53,7 +53,7 @@ class Integer
     @param values* {Integer} Integer values to compare
     @return  {Integer}
     @example
-            Integer.min(1, 2, 3); // returns 3
+        Integer.max(1, 2, 3); // returns 3
     */
     function max(values1,values2...) { }
 
@@ -64,14 +64,14 @@ class Integer
     @param max {Integer} Maximum.
     @return  {Integer}
     @example
-            function Integer.limit(min, max)
-            {
-                if (this < min)
-                    return min;
-                if (this > max)
-                    return max;
-                return this;
-            }
+        function Integer.limit(min, max)
+        {
+            if (this < min)
+                return min;
+            if (this > max)
+                return max;
+            return this;
+        }
     */
     function limit(min, max) { }
 

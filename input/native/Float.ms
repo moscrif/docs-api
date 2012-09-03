@@ -49,7 +49,7 @@ class Float
     @param values* {Float} Float values to compare
     @return  {Float}
     @example
-            Float.min(1, 2, 3); // returns 1
+        Float.min(1, 2, 3); // returns 1
     */
     function min(values1,values2...) { }
 
@@ -59,7 +59,7 @@ class Float
     @param values* {Float} Float values to compare
     @return  {Float}
     @example
-            Float.max(0.5, 1.6, 0.7); // returns 1.6
+        Float.max(0.5, 1.6, 0.7); // returns 1.6
     */
     function max(values1,values2...) { }
 

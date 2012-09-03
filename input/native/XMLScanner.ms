@@ -168,7 +168,4 @@ class XMLScanner
     @return {Integer}
     */
     function stepBack() { }
-
-
-
 }

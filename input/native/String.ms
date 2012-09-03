@@ -11,6 +11,9 @@ class String
     @property length
     @type {Integer}
     @readOnly
+    @example
+        var string = "Moscrif";
+        console<<string.length<<"\n";   // 7
     */
     property length() { }
 
@@ -18,6 +21,11 @@ class String
     Code of character at the index position, Read-write index accessor. Zero-based index
     @property [index]
     @type {Integer}
+    @example
+        var string = "Moscrif";
+        console<<string[1]<<"\n";       // 111 -> ASCII M
+        string[0] = 100;                // 100 -> ASCII 100 = d
+        console<<string<<"\n";          // doscrif
     */
     property [index] { }
 
@@ -123,9 +131,9 @@ class String
     @param [end] {Integer} Zero-based index of last character. If end is ommited it is interpretted as equal to length.
     @return {String} String slice consisting from characters starting from start index and up to but not included end index.
     @example
-            var str = "moscrif";
-            str.substring(1, 3);    // os
-            str.substring(0,-3);    // moscr
+        var str = "moscrif";
+        str.substring(1, 3);    // os
+        str.substring(0,-3);    // moscr
     */
     function substring(start[, end])
     {
@@ -138,8 +146,8 @@ class String
     @param [end] {Integer} A number of characters in the slice.
     @return {String} Required string
     @example
-            var str = "moscrif";
-            str.substr(2,3); // scr
+        var str = "moscrif";
+        str.substr(2,3); // scr
     */
     function substr(start[, end])
     {
@@ -152,8 +160,8 @@ class String
     @param [string1]* {Integer} Zero-based index of first character.
     @return {String} String consisting from concatenated arguments:  self + string1 + string2 + string3 + ... + stringN.
     @example
-            var str = "moscrif";
-            str.concat(" is").concat(" the best SDK"); // returns  "moscrif is the best SDK"
+        var str = "moscrif";
+        str.concat(" is").concat(" the best SDK"); // returns  "moscrif is the best SDK"
     */
     function concat(string1 [, string2 [, ... [, stringN]]]])
     {
@@ -207,10 +215,10 @@ class String
     @param what {String} String to compare
     @return {Integer} 1;0 or -1 acording to result of comparation
     @example
-            var str = "b";
-            str.localeCompare("a"); // returns 1
-            str.localeCompare("b"); // returns 0
-            str.localeCompare("c"); // returns -1
+        var str = "b";
+        str.localeCompare("a"); // returns 1
+        str.localeCompare("b"); // returns 0
+        str.localeCompare("c"); // returns -1
     */
     function localeCompare(what)
     {
@@ -235,20 +243,20 @@ class String
     @param replaceBy {String} If replaceBy is a function then this function will be called for each matching substring with parameters corresponding to the whole match and each matched sub-group.
     @return {String} Copy of the string where all fragments satisfying regexp are replaced by replaceBy.
     @example
-            var s = "25.5K";
-            // regEsp command, find whole or decimal number and split to two parameters
-            var regEsp = /(\d+)?(([.])?\d+)/g;
-            // convert kelvin to celsius
-            function k2c(str, g, z)
-            {
-                // if number is decimal, z contains decimal part, otherwise it contains last character
-                var number = g + z;
+        var s = "25.5K";
+        // regEsp command, find whole or decimal number and split to two parameters
+        var regEsp = /(\d+)?(([.])?\d+)/g;
+        // convert kelvin to celsius
+        function k2c(str, g, z)
+        {
+            // if number is decimal, z contains decimal part, otherwise it contains last character
+            var number = g + z;
 
-                // return converted value
-                return (number.toNumber() - 273.15) + "C";
-            }
-            // replace value
-            console<<s.replace(regEsp, k2c )<<"\n";
+            // return converted value
+            return (number.toNumber() - 273.15) + "C";
+        }
+        // replace value
+        console<<s.replace(regEsp, k2c )<<"\n";
     */
     function replace(regexp, replaceBy)
     {
@@ -271,12 +279,12 @@ class String
     @param [limit] {Integer} Maximum number of elements in returned array
     @return {Array} Array of strings - substrings between separators.
     @example
-            var str = "Moscrif is the best cross-platform mobile development tool suite.";
-            var words = str.split(" ");
-            // writes list of words from str
-            for (var i = 0; i &lt; words.length; i++) {
-                console&lt;&lt;words[i]&lt;&lt;"\n";
-            }
+        var str = "Moscrif is the best cross-platform mobile development tool suite.";
+        var words = str.split(" ");
+        // writes list of words from str
+        for (var i = 0; i &lt; words.length; i++) {
+            console&lt;&lt;words[i]&lt;&lt;"\n";
+        }
     */
     function split(separator[, limit])
     {
@@ -296,6 +304,9 @@ class String
     Creates lower case copy of the string.
     @method toLowerCase
     @return {String} Lower case copy of the string.
+    @example
+        var string = "Moscrif";
+        console<<string.toLowerCase()<<"\n";   // moscrif
     */
     function toLowerCase()
     {
@@ -305,6 +316,9 @@ class String
     Creates upper case copy of the string.
     @method toUpperCase
     @return {String} Upper case copy of the string.
+    @example
+        var string = "Moscrif";
+        console<<string.toUpperCase()<<"\n";   // MOSCRIF
     */
     function toUpperCase()
     {

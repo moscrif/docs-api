@@ -24,18 +24,18 @@ class Object
     @type {String}
     @readOnly
     @example
-            class Clazz
-            {
-            }
+        class Clazz
+        {
+        }
 
-            var instance = new Clazz();
-            var obj = { };
+        var instance = new Clazz();
+        var obj = { };
 
-            // obj has "undefined" className
-            assert obj.className == undefined;
+        // obj has "undefined" className
+        assert obj.className == undefined;
 
-            // instance has "Clazz" className
-            assert instance.className == "Clazz";
+        // instance has "Clazz" className
+        assert instance.className == "Clazz";
     */
     property className(v) { }
 
@@ -108,10 +108,10 @@ class Object
     @param what {String|Stream} Code to evaluate.
     @param [namespace] {Object} Object used as global namespace for evaluated code
     @example
-            var obj = new Object();
-            obj.number = 3;
-            obj.eval("number = number*number", obj);
-            obj.number; // 9
+        var obj = new Object();
+        obj.number = 3;
+        obj.eval("number = number*number", obj);
+        obj.number; // 9
     */
     function eval(what[, namespace]) { }
 
@@ -121,8 +121,4 @@ class Object
     @param tag {Symbol} 
     */
     function propertyAt(tag) { }
-
-
-
-
 }

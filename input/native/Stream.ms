@@ -35,20 +35,20 @@ class Stream
     @param numberOfAttempts=1 {Integer} Number of attempts to connect, 1 by default.
     @return {Stream} New instance of Stream class or null if funcition failed.
     @example
-            // following code will print out http server response of moscrif.com server:
-            var sock = Stream.openSocket("www.moscrif.com:80" , 5 );
-            if(!sock)
-                return;
-            sock.println("GET http://www.moscrif.com/default.aspx HTTP/1.0");
-            sock.println("User-Agent: Moscrif");
-            sock.println("");
+        // following code will print out http server response of moscrif.com server:
+        var sock = Stream.openSocket("www.moscrif.com:80" , 5 );
+        if(!sock)
+            return;
+        sock.println("GET http://www.moscrif.com/default.aspx HTTP/1.0");
+        sock.println("User-Agent: Moscrif");
+        sock.println("");
 
-            while( true )
-            {
-                var s = sock.readln();
-                if(s == undefined) break;
-                console&lt;&lt;s&lt;&lt;"\n";
-            }
+        while( true )
+        {
+            var s = sock.readln();
+            if(s == undefined) break;
+            console&lt;&lt;s&lt;&lt;"\n";
+        }
     */
     function openSocket(addressPort, timeout = 10, numberOfAttempts = 1) { }
 
@@ -155,7 +155,7 @@ class Stream
     function readln() { }
 
     /**
-    Reports if this is an input stream or not.
+    Length of the input stream or not.
     @property length
     @type {Boolean}
     @readOnly
@@ -176,7 +176,4 @@ class Stream
     @readOnly
     */
     property name() { }
-
-
-
 }

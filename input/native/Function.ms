@@ -47,23 +47,23 @@ class Function
     property optionals() { }
 
     /**
-    Returns number of optional parameters.
-    @property optionals
-    @type {Integer}
-    @readOnly
-    */
-    property optionals() { }
-
-    /**
     Invokes the function in context of this set to thisObj.
     @method call
     @param thisObj {Object}
     @param [p0]* {Object}
+    @example
+        ....onDraw = function(sender, canvas)
+        {
+            var self = this super;
+            self.draw.call(self, canvas);
+        }
     */
     function call(thisObj [,p0, ... pN]) { }
 
     /**
-    Invokes the function in context of this set to thisObj. Parameters of the function call are compsed from list of parameters p0 ... pN and appended by members of argv array. Thus actual call will have following parameters list: p0, ..., pN, argv[0], ... argv[N].
+    Invokes the function in context of this set to thisObj.
+        Parameters of the function call are compsed from list of parameters p0 ... pN and appended by members of argv array.
+        This actual call will have following parameters list: p0, ..., pN, argv[0], ... argv[N].
     @method apply
     @param thisObj {Object}
     @param [p0]* {Object}

@@ -1,16 +1,15 @@
 /**
-
 Represents date and time. Local and UTC timezones supported.
 @class Date
 @module core
 @example
-        var d = new Date();
-        console.printf("today is: %d-%d-%d %d:%d:%d\n", d.day, d.month, d.year, d.hour, d.minute, d.second);
-        // UTC
-        d = new Date("28 Feb 1980 UTC");
-        if (d.UTCday != 28 || f.UTCmonth != 2 || d.UTCyear != 1980) throw "date ctor";
-        // Locale strings
-        console &lt;&lt; d.toLocaleString(true, 1);
+    var d = new Date();
+    console.printf("today is: %d-%d-%d %d:%d:%d\n", d.day, d.month, d.year, d.hour, d.minute, d.second);
+    // UTC
+    d = new Date("28 Feb 1980 UTC");
+    if (d.UTCday != 28 || f.UTCmonth != 2 || d.UTCyear != 1980) throw "date ctor";
+    // Locale strings
+    console <<<< d.toLocaleString(true, 1);
 */
 class Date
 {
@@ -21,6 +20,8 @@ class Date
     @method this
     @param [value] {String} Date in string format: in [RFC-822](http://www.w3.org/Protocols/rfc822/#z28) date format or [ISO 8601](http://www.w3.org/TR/NOTE-datetime)
     @return {Date} New instance of Date class.
+    @example
+        var d = new Date();
     */
     function this([value]) { }
 
@@ -170,7 +171,7 @@ class Date
 
 
     /**
-    Number of miliseconds. This property is suitable for animation (game) scheduling.
+    Actual date
     @method now
     @param [sequential=false] {Boolean} This ensures that two consequtive calls of Date.now(true) return distinct values.
     @return {Date} New instance of date class.

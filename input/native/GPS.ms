@@ -10,12 +10,12 @@ class GPS
     Constructs new GPS object.
     @method this
     @example
-            this._gps = new GPS();
-            this._gps.start(200);
-            this._gps.onPositionReceived = function(sender, timestamp, params) {
-                app.actualLat = params[0];
-                app.actualLon = params[1];
-            }
+        this._gps = new GPS();
+        this._gps.start(200);
+        this._gps.onPositionReceived = function(sender, timestamp, params) {
+            app.actualLat = params[0];
+            app.actualLon = params[1];
+        }
     */
     function this() { }
 
@@ -24,7 +24,7 @@ class GPS
     @method isAvailable
     @return Boolean
     @example
-            if (!GPS.isAvailable())
+        if (!GPS.isAvailable())
             System.messageBox("No GPS detected in your device!");
     */
     function isAvailable() { }
@@ -33,12 +33,12 @@ class GPS
     This function starts sending position data. When new data are available, GPS object calls callback functions.
     @method start
     @example
-            this._gps = new GPS();
-            this._gps.start(200);
-            this._gps.onPositionReceived = function(sender, timestamp, params) {
-                app.actualLat = params[0];
-                app.actualLon = params[1];
-            }
+        this._gps = new GPS();
+        this._gps.start(200);
+        this._gps.onPositionReceived = function(sender, timestamp, params) {
+            app.actualLat = params[0];
+            app.actualLon = params[1];
+        }
     */
     function start() { }
 
@@ -71,12 +71,12 @@ class GPS
     * params[2] - altitude
     @event onPositionReceived
     @example
-            this._gps = new GPS();
-            this._gps.start(200);
-            this._gps.onPositionReceived = function(sender, timestamp, params) {
-                app.actualLat = params[0];
-                app.actualLon = params[1];
-            }
+        this._gps = new GPS();
+        this._gps.start(200);
+        this._gps.onPositionReceived = function(sender, timestamp, params) {
+            app.actualLat = params[0];
+            app.actualLon = params[1];
+        }
     */
     function onPositionReceived(sender, timestamp, params) { }
 
@@ -87,14 +87,11 @@ class GPS
     @param {Array} params State information.
     @event onStateChanged
     @example
-            this._gps = new GPS();
-            this._gps.start(200);
-            this._gps.onPositionReceived = function(sender, timestamp, params) {
-                app.actualLat = params[0];
-                app.actualLon = params[1];
-            }
+        this._gps = new GPS();
+        this._gps.start(200);
+        this._gps.onStateChanged = function(sender, timestamp, state) {
+            console<<"new state: "<<state<<"\n";
+        }
     */
     function onStateChanged(sender, timestamp, state) { }
-
-
 }

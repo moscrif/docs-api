@@ -1,6 +1,6 @@
 /**
-Shader is the based class for objects that return horizontal spans of colors during drawing.
-A subclass of Shader is installed in a Paint calling paint.shader = shader.
+Shader is used to create a various types of color gradients.
+An instance of Shader is installed in a Paint calling paint.shader = shader.
 After that any object (other than a bitmap) that is drawn with that paint will get its color(s) from the shader.
 @class Shader
 @module core
@@ -18,29 +18,29 @@ class Shader
     @param mode {Symbol} Intege current version this parameter is ignored. It cancel be for example null.
     @return {Shader} Shader object, which creates linear gradient.
     @example
-            this._path = Path.fromSVG("M1....8.63z");
-            
-            // resize and place path ...
-            
-            // create paint object
-            var paint = new Paint();
-            var pts = {
-                        start :
-                        {
-                            x: System.width / 2,
-                            y : System.height / 4,
-                        },
-                        end :
-                        {
-                            x: System.width / 2,
-                            y : 3 * System.height / 4,
-                        }
-                      }
-            var clrs = new Array(0xffff0000, 0xff00ff00, 0xff0000ff);
-            var pos = new Array(0.2, 0.5, 0.8);
-            paint.shader = Shader.linear(pts, clrs, pos, 0);
-            // draw vector
-            canvas.drawPath(this._path, paint);
+        this._path = Path.fromSVG("M1....8.63z");
+        
+        // resize and place path ...
+        
+        // create paint object
+        var paint = new Paint();
+        var pts = {
+            start :
+            {
+                x: System.width / 2,
+                y : System.height / 4,
+            },
+            end :
+            {
+                x: System.width / 2,
+                y : 3 * System.height / 4,
+            }
+        }
+        var clrs = new Array(0xffff0000, 0xff00ff00, 0xff0000ff);
+        var pos = new Array(0.2, 0.5, 0.8);
+        paint.shader = Shader.linear(pts, clrs, pos, 0);
+        // draw vector
+        canvas.drawPath(this._path, paint);
     */
     function linear(pts, clrs, pos, mode) { }
 
@@ -57,34 +57,34 @@ class Shader
     * If this is not null, the values must begin with 0, end with 1.0, and intermediate values must be strictly increasing.
     @return {Shader} hader object, which creates sweep gradient.
     @example
-            this._path = Path.fromSVG("M1....8.63z");
-            
-            // resize and place path ..
-            
-            // create paint object
-            var paint = new Paint();
-            var pts = {
-                        start :
-                        {
-                            x: System.width / 2,
-                            y : System.height / 4,
-                        },
-                        end :
-                        {
-                            x: System.width / 2,
-                            y : 3 * System.height / 4,
-                        }
-                      }
-            var clrs = new Array(0xffff0000, 0xff00ff00, 0xff0000ff);
-            var pos = new Array(0.0, 0.5, 1.0);
-            paint.shader = Shader.sweep(System.width / 2, System.height / 2, clrs, pos);
-            // draw vector
-            canvas.drawPath(this._path, paint);
+        this._path = Path.fromSVG("M1....8.63z");
+        
+        // resize and place path ..
+        
+        // create paint object
+        var paint = new Paint();
+        var pts = {
+            start :
+            {
+                x: System.width / 2,
+                y : System.height / 4,
+            },
+            end :
+            {
+                x: System.width / 2,
+                y : 3 * System.height / 4,
+            }
+        }
+        var clrs = new Array(0xffff0000, 0xff00ff00, 0xff0000ff);
+        var pos = new Array(0.0, 0.5, 1.0);
+        paint.shader = Shader.sweep(System.width / 2, System.height / 2, clrs, pos);
+        // draw vector
+        canvas.drawPath(this._path, paint);
     */
     function sweep(cx, cy, clrs, pos) { }
 
   /**
-    Call this to create a new shader that will draw with the specified bitmap.
+    Call this to create a new shader that will draw with the specified bitmap. The bitma gradient is used to apply texture onto various irregular shapes.
     @method bitmap
     @static
     @param fileName {String} The bitmap to use inside the shader.
@@ -100,15 +100,15 @@ class Shader
     * #mirror - Repeat bitmap more times, but mirror turned.
     @return {Shader} hader object, which creates sweep gradient.
     @example
-            this._path = Path.fromSVG("M1....8.63z");
+        this._path = Path.fromSVG("M1....8.63z");
 
-            // resize and place path ...
+        // resize and place path ...
 
-            // create paint object
-            var paint = new Paint();
-            paint.shader = Shader.bitmap("app://img.png", #clamp, #clamp);
-            // draw vector
-            canvas.drawPath(this._path, paint);
+        // create paint object
+        var paint = new Paint();
+        paint.shader = Shader.bitmap("app://img.png", #clamp, #clamp);
+        // draw vector
+        canvas.drawPath(this._path, paint);
     */
     function bitmap(fileName, tileModeX, tileModeY) { }
 
@@ -131,6 +131,4 @@ class Shader
     @method resetLocalMatrix
     */
     function resetLocalMatrix() { }
-
-
 }

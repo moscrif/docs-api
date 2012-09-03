@@ -5,7 +5,6 @@ The Paint class holds the style and color information about how to draw geometri
 */
 class Paint
 {
-
     /**
     Object constructor creates new Paint object.
     @method this
@@ -16,56 +15,49 @@ class Paint
     Restores the paint to its initial settings.
     @method reset
     @example
-            var paint = new Paint();
-            // 12
-            console<<paint.textSize<<"\n";
-            paint.textSize = 25;
-            // 25
-            console<<paint.textSize<<"\n";
-            // restore default settings
-            paint.reset()
-            // 12
-            console<<paint.textSize<<"\n";
+        var paint = new Paint();
+        // 12
+        console<<paint.textSize<<"\n";
+        paint.textSize = 25;
+        // 25
+        console<<paint.textSize<<"\n";
+        // restore default settings
+        paint.reset()
+        // 12
+        console<<paint.textSize<<"\n";
     */
     function reset() { }
 
     /**
-    Helper for Flags, setting or returning AntiAlias
+    Enable or disable antialiasing.  Antialiasing is the technique of minimizing the distortion artifacts known as aliasing when representing a high-resolution image at a lower resolution.
     @property antiAlias
     @type {Boolean}
     */
     property antiAlias() { }
 
-    /**
-    Helper for Flags, setting or returning LinearText
-    @property linearText
-    @type {Boolean}
-    */
-    property linearText() { }
-
-    /**
-    Helper for Flags, setting or returning SubpixelText
+    /*
+    Enable subpixel text rendering. "Subpixel rendering is a way to increase the apparent resolution of a computer's liquid crystal display (LCD) or organic light-emitting diode (OLED) display by rendering pixels to take into account the screen type's physical properties. It takes advantage of the fact that each pixel on a colour LCD is actually composed of individual red, green, and blue or other color subpixels to anti-alias text with greater detail or to increase the resolution of all image types on layouts which are specifically designed to be compatible with subpixel rendering." Source: wikipedia.org
     @property subpixelText
     @type {Boolean}
     */
     property subpixelText() { }
 
     /**
-    Helper for Flags, setting or returning UnderlineText
+    Create underline text effect.
     @property underlineText
     @type {Boolean}
     */
     property underlineText() { }
 
     /**
-    Helper for Flags, setting or returning strikeThruText
+    Enable strikethrough text effect.
     @property strikeThruText
     @type {Boolean}
     */
     property strikeThruText() { }
 
     /**
-    Helper for Flags, setting or returning FakeBold
+    If fakeBoldText effect is set to true, the text is drawen with bold style.
     @property fakeBoldText
     @type {Boolean}
     */
@@ -88,18 +80,18 @@ class Paint
     @property color
     @type {Float}
     @example
-            var paint = new Paint();
-            paint.color = 0xffffffff; // white
-            paint.color = 0xffff0000; // red
-            paint.color = 0xff00ff00; // green
-            paint.color = 0xff0000ff; // blue
-            paint.color = 0xff000000; // black
-            paint.color = 0x00000000; // transparent
+        var paint = new Paint();
+        paint.color = 0xffffffff; // white
+        paint.color = 0xffff0000; // red
+        paint.color = 0xff00ff00; // green
+        paint.color = 0xff0000ff; // blue
+        paint.color = 0xff000000; // black
+        paint.color = 0x00000000; // transparent
     */
     property color() { }
 
     /**
-    Helper to getColor() that just setting or returning the color's alpha value.
+    Alpha level, affects transparency. Value 0 means fully transparent, value 255 -> no transparent
     @property alpha
     @type {Integer}
     */
@@ -142,29 +134,29 @@ class Paint
     @property shader
     @type {Shader}
     @example
-            //create new instance of shader class. For more information about parameters see Shader class
-            var shader = Shader.linear(pts, clrs, pos,0);
+        //create new instance of shader class. For more information about parameters see Shader class
+        var shader = Shader.linear(pts, clrs, pos,0);
 
-            //create new instance of Paint class
-            this.paint = new Paint();
+        //create new instance of Paint class
+        this.paint = new Paint();
 
-            //set shader
-            this.paint.shader = shader;
+        //set shader
+        this.paint.shader = shader;
     */
     property shader() { }
 
     /**
-    ColorFilter
+    Color filter used to apply grayscale or colloring effect.
     @property colorFilter
     @type {ColorFilter}
     @example
-            //create color filter for grayscale images
-            var colorFilter = ColorFilter.grayscale();
+        //create color filter for grayscale images
+        var colorFilter = ColorFilter.grayscale();
 
-            paint.colorFilter = colorFilter;
+        paint.colorFilter = colorFilter;
 
-            //draw bitmap converted to grayscale
-            canvas.drawBitmap(bitmap, 0, 0, paint);
+        //draw bitmap converted to grayscale
+        canvas.drawBitmap(bitmap, 0, 0, paint);
     */
     property colorFilter() { }
 
@@ -200,17 +192,17 @@ class Paint
     @property textAlign
     @type {Symbol}
     @example
-            canvas.clear(0xffffffff);
+        canvas.clear(0xffffffff);
 
-            // create paint object for text
-            var paint = new Paint();
-            paint.textSize = 40;
-            paint.textAlign = #center;
-            // set diferent font
-            paint.typeface = Typeface.fromName("FreeMono", #bold+italic);
+        // create paint object for text
+        var paint = new Paint();
+        paint.textSize = 40;
+        paint.textAlign = #center;
+        // set diferent font
+        paint.typeface = Typeface.fromName("FreeMono", #bold+italic);
 
-            // draw text to the center of screen
-            canvas.drawTextBox("Moscrif", 0, 0, System.width, System.height, paint, #center);
+        // draw text to the center of screen
+        canvas.drawTextBox("Moscrif", 0, 0, System.width, System.height, paint, #center);
     */
     property textAlign() { }
 
@@ -307,13 +299,13 @@ class Paint
     @param text {String} The text string.
     @return {Multivalue} The size of the text.
     @example
-            var paint = new Paint();
-            
-            //get text dimensions
-            var (w, h) = paint.measureText("Moscrif");
-            
-            //draw text to the midle of the screen. Position of left bottom point is calculations using tet dimension
-            canvas.drawText("Moscrif", System.width / 2 - w / 2, System.height / 2 - h / 2, paint);
+        var paint = new Paint();
+        
+        //get text dimensions
+        var (w, h) = paint.measureText("Moscrif");
+        
+        //draw text to the midle of the screen. Position of left bottom point is calculations using tet dimension
+        canvas.drawText("Moscrif", System.width / 2 - w / 2, System.height / 2 - h / 2, paint);
     */
     function measureText(text) { }
 

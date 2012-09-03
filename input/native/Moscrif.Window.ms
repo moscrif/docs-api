@@ -12,19 +12,19 @@ class Moscrif.Window
     @param [name] {String} Window's name.
     @return {Moscrif.Window}
     @example
-            var app = new Moscrif.Window();
+        var app = new Moscrif.Window();
 
-            app.onStart = function()
-            {
-                ...
-            }
+        app.onStart = function()
+        {
+            ...
+        }
 
-            app.onProcess = function(sender)
-            {
-                return 1;
-                // return 0 to quit application
-            }
-            app.init().run();
+        app.onProcess = function(sender)
+        {
+            return 1;
+            // return 0 to quit application
+        }
+        app.init().run();
     */
     function this([name]) { }
 
@@ -37,16 +37,16 @@ class Moscrif.Window
     @param [right] {Boolean} Right border of the rectangle to be invalidated.
     @param [bottom] {Boolean} Bottom border of the rectangle to be invalidated.
     @example
-            var app = new Moscrif.Window();
-            app.terminate = false;
-            ...
-            app.onProcess = function(sender)
-            {
-                // redraw window every call of onProcess event, usally used at games
-                app.invalidate();
+        var app = new Moscrif.Window();
+        app.terminate = false;
+        ...
+        app.onProcess = function(sender)
+        {
+            // redraw window every call of onProcess event, usally used at games
+            app.invalidate();
 
-                return this.terminate ? 0 : 1;
-            }
+            return this.terminate ? 0 : 1;
+        }
     */
     function invalidate([left, top, right, bottom]) { }
 
@@ -75,28 +75,30 @@ class Moscrif.Window
     /**
     Initialize window object.
     @method init
+    @chainable
     @param enableFPS=true {Boolean} Default is false (FPS counting is disabled).
     @example
-            var app = new Moscrif.Window();
-            app.terminate = false;
-            app.onStart = function()
-            {
-            
-            }
-            app.onProcess = function(sender)
-            {
-            
-                return this.terminate ? 0 : 1;
-            }
-            
-            app.init();
-            app.run();
+        var app = new Moscrif.Window();
+        app.terminate = false;
+        app.onStart = function()
+        {
+        
+        }
+        app.onProcess = function(sender)
+        {
+        
+            return this.terminate ? 0 : 1;
+        }
+        
+        app.init();
+        app.run();
     */
     function init(enableFPS = true) { }
 
     /**
     Runs the main application loop. This function is blocking.
     @method run
+    @chainable
     @return {Window}
     */
     function run() { }
@@ -104,6 +106,7 @@ class Moscrif.Window
     /**
     Function adds existing view object into this window.
     @method add
+    @chainable
     @param view {View} View to add. View/ScrollView/TextView are supported.
     @param [order] {Symbol} Default is #back. Value is
 
@@ -128,6 +131,7 @@ class Moscrif.Window
     /**
     Removes all object from the window.
     @method removeAll
+    @chainable
     */
     function removeAll() { }
 
@@ -137,17 +141,17 @@ class Moscrif.Window
     @param name {String} Name of the child view to search
     @return {View} Instance of found child view, or null if not found.
     @example
-            var btnView = new Moscrif.View();
-            btnView.name = "button";
-            
-            var imgView = new Moscrif.View();
-            imgView.name = "image";
-            app.add(imgView);
-            
-            // find button view
-            var button = this.find("button");
-            // detach button view
-            button.detach();
+        var btnView = new Moscrif.View();
+        btnView.name = "button";
+        
+        var imgView = new Moscrif.View();
+        imgView.name = "image";
+        app.add(imgView);
+        
+        // find button view
+        var button = this.find("button");
+        // detach button view
+        button.detach();
     */
     function find(name) { }
 

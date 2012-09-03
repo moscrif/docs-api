@@ -3,14 +3,14 @@ This class allows to manipulate local SQLite database.
 @class Database
 @module sqlite
 @example
-        // load database file
-        var database = Database.open("dat://db.db");
-        
-        // create SQL query
-        var result = database.exec("....SQL QUERY....");
-        
-        // release sources reserved for database
-        database.close();
+    // load database file
+    var database = Database.open("dat://db.db");
+    
+    // create SQL query
+    var result = database.exec("....SQL QUERY....");
+    
+    // release sources reserved for database
+    database.close();
 */
 class Database
 {
@@ -49,11 +49,9 @@ class Database
     function exec(sql, [, value1 [, value2 [, ... valueN]]]) { }
 
     /**
-    Useful tool to find out last ID insert into database.
+    Method to find last ID insert into database.
     @method lastInsertedID
     @return {Integer} Returns last inserted ID.
     */
     function lastInsertedID() { }
-
-
 }

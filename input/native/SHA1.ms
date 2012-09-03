@@ -7,7 +7,6 @@ SHA-1 is a cryptographic hash function designed by the National Security Agency 
 */
 class SHA1
 {
-
     /**
     Hash string.
     @method string
@@ -31,7 +30,4 @@ class SHA1
     @return {Array}
     */
     function file(path) { }
-
-
-
 }

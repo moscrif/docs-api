@@ -3,14 +3,14 @@ This class allows to extract zip archive.
 @class Unzip
 @module zip
 @example
-        var archive = new Unzip("dat://archive.zip");
-        if (!archive || !archive.first())
-            return;
-        
-        // extract all files to the application folder
-        do {
-            archive.unzip("dat://");
-        } while (archive.next());
+    var archive = new Unzip("dat://archive.zip");
+    if (!archive || !archive.first())
+        return;
+
+    // extract all files to the application folder
+    do {
+        archive.unzip("dat://");
+    } while (archive.next());
 */
 class Unzip
 {
@@ -34,6 +34,11 @@ class Unzip
     Sets next file as a "active file". Property currentFileInfo has values of this file.
     @method next
     @return {Boolean} True, if operation was succesfull.
+    @example
+        // extract all files to the application folder
+        do {
+            archive.unzip("data://");
+        } while (archive.next());
     */
     function next() { }
 
@@ -59,12 +64,12 @@ class Unzip
     property count() { }
 
     /**
-    Information about a file from the archive. The file, about which information are required, can be set by first() and next() functions. This property is an object consisted from three members: fileName, compressedSize and uncompressedSize.
+    Information about a file from the archive.
+    The file, about which information are required, can be set by first() and next() functions.
+    This property is an object consisted from three members: fileName, compressedSize and uncompressedSize.
     @property currentFileInfo
     @type {Object}
     @readOnly
     */
     property currentFileInfo() { }
-
-
 }

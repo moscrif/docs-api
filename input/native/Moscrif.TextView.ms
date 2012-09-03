@@ -71,7 +71,7 @@ class Moscrif.TextView
     function doCursorKey(sender, key) { }
 
     /**
-    Remove object from superior view object (application, form etc).
+    Insert char into text view.
     @param char {Integer} (Uni)code of char to be inserted.
     @method insert
     */

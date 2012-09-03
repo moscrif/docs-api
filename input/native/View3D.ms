@@ -3,22 +3,22 @@ This class allows to create basic 3D transformations. This class calculates tran
 @class View3D
 @module core
 @example
-        app.onDraw = function (sender, canvas)
-        {
-            canvas.clear(0xffffffff);
-        
-            // move center of coordinates to the middle of the screen
-            canvas.translate(System.width / 2, System.height / 2);
-        
-            // create new view3d object
-            var view3d = new View3D();
-            view3d.rotateY(45);
-            // apply rotating to the canvas
-            view3d.applyToCanvas(canvas);
-        
-            // draw square to the midle of the screen
-            canvas.drawRect(-100, -100, 100, 100, new Paint());
-        }
+    app.onDraw = function (sender, canvas)
+    {
+        canvas.clear(0xffffffff);
+    
+        // move center of coordinates to the middle of the screen
+        canvas.translate(System.width / 2, System.height / 2);
+    
+        // create new view3d object
+        var view3d = new View3D();
+        view3d.rotateY(45);
+        // apply rotating to the canvas
+        view3d.applyToCanvas(canvas);
+    
+        // draw square to the midle of the screen
+        canvas.drawRect(-100, -100, 100, 100, new Paint());
+    }
 */
 class View3D
 {
@@ -84,6 +84,23 @@ class View3D
     Apply transformations to canvas object.
     @param canvas {Canavas} Object to the application of transformations
     @method applyToCanvas
+    @example
+        app.onDraw = function (sender, canvas)
+        {
+            canvas.clear(0xffffffff);
+        
+            // move center of coordinates to the middle of the screen
+            canvas.translate(System.width / 2, System.height / 2);
+        
+            // create new view3d object
+            var view3d = new View3D();
+            view3d.rotateY(45);
+            // apply rotating to the canvas
+            view3d.applyToCanvas(canvas);
+        
+            // draw square to the midle of the screen
+            canvas.drawRect(-100, -100, 100, 100, new Paint());
+        }
     */
     function applyToCanvas(canvas) { }
 

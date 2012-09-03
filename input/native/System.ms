@@ -12,11 +12,11 @@ class System
     @param fmessage {String} Text to be displayed in the dialog box
     @return {Boolean} True when user click to the button
     @example
-            var location = System.path(#USER_DOCUMENTS);
-            if (System.isFile(location+"/userFile.txt"))
-                console<<"File size: " << System.getFileSize(location+"/userFile.txt") << "B\n";
-            else
-                System.messageBox("this file does not exists");
+        var location = System.path(#USER_DOCUMENTS);
+        if (System.isFile(location+"/userFile.txt"))
+            console<<"File size: " << System.getFileSize(location+"/userFile.txt") << "B\n";
+        else
+            System.messageBox("this file does not exists");
     */
     function messageBox(message) { }
 
@@ -34,27 +34,27 @@ class System
 
     @return {Boolean} True when system keyboard is available.
     @example
-            function processKey(sender, key)
-            {
-                console << "key on keyboard: " << key << "\n";
-            }
-            if (!System.requestKeyboard(processKey, #default)) {
-                // use software keyboard
-                // swKeyboard = new Keyboard();
-                swKeyboard.visible = false;
-            }
+        function processKey(sender, key)
+        {
+            console << "key on keyboard: " << key << "\n";
+        }
+        if (!System.requestKeyboard(processKey, #default)) {
+            // use software keyboard
+            // swKeyboard = new Keyboard();
+            swKeyboard.visible = false;
+        }
     */
     function requestKeyboard(callback, keyboardType) { }
 
     /**
-    Displays system (build-in native) keyboard.
-    @method requestKeyboard
+    Hide system (build-in native) keyboard.
+    @method hideKeyboard
     @example
             // system keyboad is not supported in emulator
             if(System.IS_EMULATOR === false)
                 System.hideKeyboard();
     */
-    function requestKeyboard(callback, keyboardType) { }
+    function hideKeyboard() { }
 
     /**
     This function tries to find all files in required format at specified location.
@@ -63,12 +63,12 @@ class System
     @param [ef] {Function} Function, which is called for each found file. This function should accept two parameters (name of file and file flag) and returns true for continue searching or false for stop searching.
     @return {Integer} Number of found files.
     @example
-            function manage(name, flag)
-            {
-                console<<"file name: "<<name<<" flag: "<<flag<<"\n";  // displays information about file
-                return true;    // search for another file (return false for stop searching)
-            }
-            System.scanFiles("dat://folder/*.txt", manage); //search for txt files in dat://folder/ returns number of files
+        function manage(name, flag)
+        {
+            console<<"file name: "<<name<<" flag: "<<flag<<"\n";  // displays information about file
+            return true;    // search for another file (return false for stop searching)
+        }
+        System.scanFiles("dat://folder/*.txt", manage); //search for txt files in dat://folder/ returns number of files
     */
     function scanFiles(path[, ef]) { }
 
@@ -94,12 +94,12 @@ class System
     @method path
     @return {String} Path to required folder
     @example
-            // get location of “my documents” folder
-            var location = System.path(#USER_DOCUMENTS);
-            if (System.isFile(location+"/userFile.txt"))
-                System.deleteFile(location+"/userFile.txt");  //delete file from directory, where user's documents are saved usually
-            else;
-                // this file does not exists
+        // get location of “my documents” folder
+        var location = System.path(#USER_DOCUMENTS);
+        if (System.isFile(location+"/userFile.txt"))
+            System.deleteFile(location+"/userFile.txt");  //delete file from directory, where user's documents are saved usually
+        else;
+            // this file does not exists
     */
     function path(folder) { }
 
@@ -171,13 +171,13 @@ class System
     @method isFile
     @return {Boolean} True if file exists, otherwise returns false
     @example
-            System.isFile("dat://folder/a.txt"); // returns true if file exists
+        System.isFile("dat://folder/a.txt"); // returns true if file exists
 
-            var location = System.path(#USER_DOCUMENTS);
-            if (System.isFile(location+"/userFile.txt"))
-                System.deleteFile(location+"/userFile.txt");  //delete file from directory, where user's documents are saved usually
-            else;
-                // this file does not exists
+        var location = System.path(#USER_DOCUMENTS);
+        if (System.isFile(location+"/userFile.txt"))
+            System.deleteFile(location+"/userFile.txt");  //delete file from directory, where user's documents are saved usually
+        else;
+            // this file does not exists
     */
     function isFile(file) { }
 
@@ -187,13 +187,13 @@ class System
     @method isDir
     @return {Boolean} True if directory / folder exists, otherwise returns false.
     @example
-            System.isDir("dat://folder/subfolder"); // returns true if subfolder exists
+        System.isDir("dat://folder/subfolder"); // returns true if subfolder exists
 
-            var location = System.path(#USER_DOCUMENTS);
-            if (!System.isDir(location+"/newFolder"))
-                System.createDir(location+"/newFolder");  //create new folder in directory, where user's documents are saved usually
-            else;
-                // this folder alredy exists
+        var location = System.path(#USER_DOCUMENTS);
+        if (!System.isDir(location+"/newFolder"))
+            System.createDir(location+"/newFolder");  //create new folder in directory, where user's documents are saved usually
+        else;
+            // this folder alredy exists
     */
     function isDir(dir) { }
 
@@ -246,11 +246,11 @@ class System
     @method getFileSize
     @return {integer} Size of the file.
     @example
-            var location = System.path(#USER_DOCUMENTS);
-            if (System.isFile(location+"/userFile.txt"))
-                console<<"File size: " << System.getFileSize(location+"/userFile.txt") << "B\n";
-            else
-                // this file does not exists
+        var location = System.path(#USER_DOCUMENTS);
+        if (System.isFile(location+"/userFile.txt"))
+            console<<"File size: " << System.getFileSize(location+"/userFile.txt") << "B\n";
+        else
+            // this file does not exists
     */
     function getFileSize(file) { }
 
@@ -261,11 +261,11 @@ class System
     @method createDir
     @return {Boolean} True if function succeed, otherwise returns false
     @example
-            var location = System.path(#USER_DOCUMENTS);
-            if (!System.isDir(location+"/newFolder"))
-                System.createDir(location+"/newFolder");  //create new folder in directory, where user's documents are saved usually
-            else;
-                // this folder alredy exists
+        var location = System.path(#USER_DOCUMENTS);
+        if (!System.isDir(location+"/newFolder"))
+            System.createDir(location+"/newFolder");  //create new folder in directory, where user's documents are saved usually
+        else;
+            // this folder alredy exists
     */
     function createDir(dir [, createSubDirs]) { }
 

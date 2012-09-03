@@ -1,6 +1,5 @@
 /**
-
-Math object has no constructor thus you cannot create instances of it. Consider Math as a namespace - collection of static methods and constants.
+Math class provides constants and static methods for trigonometric, logarithmic, and other common mathematical functions.
 @class Math
 @module core
 */
@@ -134,7 +133,7 @@ class Math
     @param number {Float|Integer} Number to round.
     @return {Float|Integer} The smallest integer greater than or equal to the argument.
     @example
-            var a = Math.ceil(1.5); // return 2
+        var a = Math.ceil(1.5); // return 2
     */
     function ceil(number) { }
 
@@ -144,8 +143,8 @@ class Math
     @param number {Float} Float number to round
     @return {Integer} Rounded number
     @example
-            Math.round(1.5); // returns 2
-            Math.round(1.4); // returns 1
+        Math.round(1.5); // returns 2
+        Math.round(1.4); // returns 1
     */
     function round(number) { }
 

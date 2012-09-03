@@ -20,18 +20,19 @@ Bitmap class manages all operations with pictures. Using this class developer ca
 */
 class Bitmap
 {
-
     /**
     Reset all values in object, included loaded image, height and width.
     @method reset
+    @chainable
     */
     function reset() { }
 
     /**
     Resizes bitmap according to required width and height.
     @method resize
-    @param param1 {Integer} Required width of bitmap.
-    @param param2 {Integer} Required height of bitmap.
+    @chainable
+    @param param1 {Integer} Required width of bitmap in pixels.
+    @param param2 {Integer} Required height of bitmap in pixels.
     @return {Bitmap} Returns resized bitmap.
     @example
         // resize bitmap
@@ -42,13 +43,13 @@ class Bitmap
     */
     function resize(param1,param2) { }
 
-
     /**
     Function loads image from file. Supported types are:
 
     * .jpg - format uses lossy compression but does not support alpha channel. Frequently used for digital photography.
     * .png - bitmap format of image that employs lossless data compression. This format also support alpha channel.
     @method fromFile
+    @chainable
     @param file {String}  File name of a picture to be opened.
     @return {Bitmap} Returns Bitmap object, with loaded picture.
     @example
@@ -58,44 +59,80 @@ class Bitmap
     */
     function fromFile(file) { }
 
+   /**
+    Function creates bitmap object from screen. THe bitmap is same as a current image on he screen.
+    @method fromScreen
+    @chainable
+    @return {Bitmap} Returns Bitmap object, with loaded picture.
+    @example
+        game.onPointerPressed = function()
+        {
+            // make screenshot
+            this._bitmap = Bitmap.fromScreen();
+            // save screen shot
+            this._bitmap.toFile("data://screenshot.jpg");
+        }
+    */
+    function fromScreen() { }
+
+   /**
+   Save bitmap to the image file. Supported types are:
+
+    * .jpg - format uses lossy compression but does not support alpha channel. Frequently used for digital photography.
+    * .png - bitmap format of image that employs lossless data compression. This format also support alpha channel.
+    @method toFile
+    @chainable
+    @param file {String}  Name of a new image file.
+    @return {Bitmap} Returns Bitmap object, with loaded picture.
+    @example
+        game.onPointerPressed = function()
+        {
+            // make screenshot
+            this._bitmap = Bitmap.fromScreen();
+            // save screen shot
+            this._bitmap.toFile("data://screenshot.jpg");
+        }
+    */
+    function toFile(file) { }
+
 /**
     Loads image from byte array.
     @method fromBytes
-    @param data {Bytes}  Byte array.
+    @param data {Bytes} Byte array.
     @return {Bitmap} Returns Bitmap object, with loaded picture.
     @example
-            function loadImage ()
-            {
-                const HOST = "moscrif.com";
-                const FILE = "/userfiles/moscrif2.png";
-    
-                // variable for downloaded image
-                app.img = null;
-    
-                var request = new WebClient();
-    
-                request.open(HOST, 80, false, "");
-    
-                request.onReceived = function(sender) {
-                    // create bitmap from downloaded data
-                    app.img = Bitmap.fromBytes(this.data);
-                    app.invalidate();
-                }
-    
-                request.getData(FILE);
+        function loadImage ()
+        {
+            const HOST = "moscrif.com";
+            const FILE = "/userfiles/moscrif2.png";
+
+            // variable for downloaded image
+            app.img = null;
+
+            var request = new WebClient();
+
+            request.open(HOST, 80, false, "");
+
+            request.onReceived = function(sender) {
+                // create bitmap from downloaded data
+                app.img = Bitmap.fromBytes(this.data);
+                app.invalidate();
             }
-            ….
-            app.onDraw = function(sender, canvas)
-            {
-                // draw image, if it has been downloaded
-                if(app.img)
-                    canvas.drawBitmap(app.img, 0, 0);
-            }
+
+            request.getData(FILE);
+        }
+        ….
+        app.onDraw = function(sender, canvas)
+        {
+            // draw image, if it has been downloaded
+            if(app.img)
+                canvas.drawBitmap(app.img, 0, 0);
+        }
     */
     function fromBytes(data) { }
 
     /**
-    Returns size of image file in pixels.
+    Returns size of image file in pixels without loading an image.
     @method getSize
     @param file {String}
     @return {Multivalue} A pair of values. The first value is width and second is height in pixels.
@@ -122,6 +159,14 @@ class Bitmap
     @readOnly
     */
     property height() { }
+
+    /**
+    Opaque
+    @property opaque
+    @type {Integer}
+    @readOnly
+    */
+    property width() { }
 
 /**
     Returns a number representating bitmap's configuration.

@@ -2,6 +2,19 @@
 A prismatic joint provides one degree of freedom: translation along an axis fixed in body1. Relative rotation is prevented. You can use a joint limit to restrict the range of motion and a joint motor to drive the motion or to model joint friction.
 @class b2PrismaticJoint
 @module box2d
+@example
+    // create the prismatic joint
+    // set joint
+    var jointDef = {
+        lowerTranslation    : -3.0, // meters
+        upperTranslation    : 5.0,  // meters
+        enableLimit         : true,
+        enableMotor         : true,
+        motorSpeed          : 1.0,
+        maxMotorForce       : 100.0,
+    }
+    this._prismaticJoint = this.createPrismaticJoint(this._ground, this._rect1, System.width / 2, System.height / 2, 0.0, 1.0, 0.0, jointDef, true)
+
 */
 class b2PrismaticJoint
 {

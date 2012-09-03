@@ -3,13 +3,16 @@ Generates recurring events in an application.
 @class Timer
 @module core
 @example
-        // Just one scheduled execution:
-        var once = new Timer(100, false); // interval make no sense here
-        once.start(500); // dealyed start
-        one.onTick = function(sender) { }
-        
-        // each 500ms, repeats 3times only:
-        var threeTimes = new Timer(500, 3);
+    // Just one scheduled execution:
+    var once = new Timer(100, false); // interval make no sense here
+    once.start(500); // dealyed start
+    once.onTick = function(sender) { }
+    
+    // each 500ms, repeats 3times only:
+    var threeTimes = new Timer(500, 3);
+
+    // each 500ms, repeats forever
+    var threeTimes = new Timer(500, true);
 */
 class Timer
 {
@@ -47,6 +50,16 @@ class Timer
     {
     }
 
-
+    /**
+    The onTick event apperas in regular time intervals according to set time interval in costructor.
+    @event onTick
+    @example
+        var once = new Timer(100, false); // interval make no sense here
+        once.start(500); // dealyed start
+        once.onTick = function(sender) { }
+    */
+    property onTick()
+    {
+    }
 
 }

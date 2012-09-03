@@ -1,5 +1,6 @@
 /**
-This class defines controls, which are components with visual representation.
+A Scroll View creates a scrollable part of content.
+The scroll view contains more views which can scroll vertically or horizontally.
 @class Moscrif.ScrollView
 @module ui
 */
@@ -12,17 +13,17 @@ class Moscrif.ScrollView
     @param [name=null] {String} Name of object. Use null for unnamed control.
     @return {ScrollView}
     @example
-            var layout = new Moscrif.StackLayout();
-            layout.align = #start;
-            layout.pack = #start;
-            layout.orientation = #vert;
+        var layout = new Moscrif.StackLayout();
+        layout.align = #start;
+        layout.pack = #start;
+        layout.orientation = #vert;
 
-            container = new Moscrif.ScrollView("container");
-            container.scrollMode = #vert;
-            container.dockContent = #top;
-            container.layout = layout;
-            …. left, top, width, height ….
-            app.add(container);
+        container = new Moscrif.ScrollView("container");
+        container.scrollMode = #vert;
+        container.dockContent = #top;
+        container.layout = layout;
+        …. left, top, width, height ….
+        app.add(container);
     */
     function this(name = null) { }
 
@@ -39,6 +40,7 @@ class Moscrif.ScrollView
     /**
     Function adds existing view object into ScrollView.
     @method add
+    @chainable
     @param view {View} View to add. View/ScrollView/TextView are supported.
     @param [order] {Symbol} Default is.
 
@@ -51,16 +53,19 @@ class Moscrif.ScrollView
     /**
     Removes all views from the object.
     @method removeAll
+    @chainable
     */
     function removeAll() { }
 
     /**
+    Get children bounds
     @method getChildrenBounds
     @return {Multivalue}
     */
     function getChildrenBounds() { }
 
     /**
+    Get children size
     @method getChildrenSize
     @return {Multivalue}
     */
@@ -71,27 +76,26 @@ class Moscrif.ScrollView
     @method suspendLayout
     @return {Window}
     @example
-            list.native.suspendLayout();
-            for (var i = 0; i &lt;100; i++) {
-                items[i] = new ListViewItem(null,null,i.toString());
-                list.add(items[i]);
-            }
-            list.native.resumeLayout();
+        list.native.suspendLayout();
+        for (var i = 0; i &lt;100; i++) {
+            items[i] = new ListViewItem(null,null,i.toString());
+            list.add(items[i]);
+        }
+        list.native.resumeLayout();
     */
     function suspendLayout() { }
-
 
     /**
     Resume layer's recalculating.
     @method resumeLayout
     @return {Window}
     @example
-            list.native.suspendLayout();
-            for (var i = 0; i &lt;100; i++) {
-                items[i] = new ListViewItem(null,null,i.toString());
-                list.add(items[i]);
-            }
-            list.native.resumeLayout();
+        list.native.suspendLayout();
+        for (var i = 0; i &lt;100; i++) {
+            items[i] = new ListViewItem(null,null,i.toString());
+            list.add(items[i]);
+        }
+        list.native.resumeLayout();
     */
     function resumeLayout() { }
 
@@ -117,21 +121,23 @@ class Moscrif.ScrollView
     function hasFocus() { }
 
     /**
-    Function scrolls elements to coordinates (dx and dy). However, this function scrolls only in adjusted set scroll mode (horizontal or vertical).
+    Function scrolls elements by coordinates (dx and dy). However, this function scrolls only in adjusted set scroll mode (horizontal or vertical).
     @method scrollBy
+    @chainable
     @param dx {View} Horizontal coordinate.
     @param dy {View} Vertical coordinates.
     @return {ScrollView}
     */
     function scrollBy(dx, dy) { }
+
     /**
-    Function scrolls elements to coordinates (dx and dy). However, this function scrolls only in adjusted set scroll mode (horizontal or vertical).
+    Function scrolls elements to coordinates (x and y). However, this function scrolls only in adjusted set scroll mode (horizontal or vertical).
     @method scrollBy
     @param x {View} Horizontal coordinate.
     @param y {View} Vertical coordinates.
     @return {ScrollView}
     */
-    function scrollBy(dx, dy) { }
+    function scrollTo(dx, dy) { }
 
     /**
      Name of the object.
