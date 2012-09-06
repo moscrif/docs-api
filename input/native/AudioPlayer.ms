@@ -29,12 +29,12 @@ class AudioPlayer
     function this() { }
 
     /**
-    Easy way to open file for playing. By default, following audio formats are supported:
+    Easy way to open file for playing. By default, native system audio formats are supported, at least:
 
-                .wav - is suitable for short sounds or effects in games or apps
-                .mod - is great format for simple game music because it is easy to CPU
-                .ogg - is a free format suitable for high quality digital multimedia, designed as an alternative to non-free formats
-    In addition, mobile devices can support also other audio formats like mp3 etc., which means that these formats can also be supported.
+    * .wav - is suitable for short sounds or effects in games or apps
+    * .mp3 - is great format for playing music because it is easy (optimized) to CPU or its implemented by underlaying system
+
+    In addition, mobile devices can support also other audio formats like acc etc., which means that these formats can also be supported.
     @method openFile
     @param file {String} Name of file to open.
     */
