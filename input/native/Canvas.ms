@@ -468,4 +468,29 @@ class Canvas
         canvas.drawTextBox("Moscrif", 0, 0, System.width, System.height, paint, #center);
     */
     function drawTextBox(text, left, top, right, bottom, paint [, align]) { }
+
+    /**
+    Creates new canvas for offscreen drawing.
+    @method fromBitmap
+    @param bitmap {Bitmap}
+    @returns {Canvas} New instance of Canvas object.
+    @static
+    @example
+        game.onStart = function()
+        {
+            // creates offscreen bitmap
+            this._bmp = Bitmap.fromRect(200, 100);
+            // creates canvas for the ofscreen bitmap
+            this._canvas = Canvas.fromBitmap(this._bmp);
+            // draws to bitmap - can be something more complex
+            this._canvas.drawLine(0, 0, 100, 100, new Paint());
+        }
+        game.onDraw = function(canvas)
+        {
+            canvas.clear(0xffffffff);
+            // draws the offscreen drawn bitmap
+            canvas.drawBitmap(this._bmp, 100, 100);
+        }
+    */
+    function fromBitmap(bitmap);
 }

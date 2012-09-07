@@ -49,9 +49,9 @@ class Bitmap
     * .jpg - format uses lossy compression but does not support alpha channel. Frequently used for digital photography.
     * .png - bitmap format of image that employs lossless data compression. This format also support alpha channel.
     @method fromFile
-    @chainable
     @param file {String}  File name of a picture to be opened.
     @return {Bitmap} Returns Bitmap object, with loaded picture.
+    @static
     @example
         this._img = Bitmap.fromFile("app://img.png");
         ...
@@ -62,8 +62,8 @@ class Bitmap
    /**
     Function creates bitmap object from screen. THe bitmap is same as a current image on he screen.
     @method fromScreen
-    @chainable
     @return {Bitmap} Returns Bitmap object, with loaded picture.
+    @static
     @example
         game.onPointerPressed = function()
         {
@@ -74,6 +74,33 @@ class Bitmap
         }
     */
     function fromScreen() { }
+
+   /**
+    Function creates bitmap with specified dimension. Bitmap can be initially opaque.
+    @method fromRect
+    @param width {Integer} Non-zero positive width for new bitmap object.
+    @param height {Integer} Non-zero positive height for new bitmap object.
+    @param [opaque=false] {Boolean} Specifies transparency for new bitmap object. True means totally opaque, false means totally transparent.
+    @return {Bitmap} Returns the new Bitmap object.
+    @static
+    @example
+        game.onStart = function()
+        {
+            // creates offscreen bitmap
+            this._bmp = Bitmap.fromRect(200, 100);
+            // creates canvas for the ofscreen bitmap
+            this._canvas = Canvas.fromBitmap(this._bmp);
+            // draws to bitmap - can be something more complex
+            this._canvas.drawLine(0, 0, 100, 100, new Paint());
+        }
+        game.onDraw = function(canvas)
+        {
+            canvas.clear(0xffffffff);
+            // draws the offscreen drawn bitmap
+            canvas.drawBitmap(this._bmp, 100, 100);
+        }
+    */
+    function fromRect(width, height, opaque = false) { }
 
    /**
    Save bitmap to the image file. Supported types are:
@@ -100,6 +127,7 @@ class Bitmap
     @method fromBytes
     @param data {Bytes} Byte array.
     @return {Bitmap} Returns Bitmap object, with loaded picture.
+    @static
     @example
         function loadImage ()
         {
@@ -136,6 +164,7 @@ class Bitmap
     @method getSize
     @param file {String}
     @return {Multivalue} A pair of values. The first value is width and second is height in pixels.
+    @static
     @example
         // get image dimensions before loading
         var (w, h) = Bitmap.getSize("app://img.png");
