@@ -1,5 +1,6 @@
 /**
 The AdMob class encapsulated the Google Ads SDK, the latest generation in Google mobile advertising featuring refined ad formats.
+This class is available only on iOS or Android.
 @class AdMob
 @extends Object
 @module ads
@@ -22,7 +23,7 @@ class AdMob
     */
     function this(adId, bannerSize = #default) { }
 
-    /**
+    /*
     This static method returns true if AdMobs is available, false otherwise.
     @method isAvailable
     @return {Boolean} true if AdMob is allowed, false otherwise.
@@ -33,8 +34,8 @@ class AdMob
         } else {
             console << "AdMob is disabled!";
         }
-    */
     function isAvailable() { }
+    */
 
     /**
     This method creates and shows ad banner at specified position on screen.
