@@ -32,7 +32,7 @@ class AdMob
     @method show
     @param x {Integer} x coordinate of screen's position.
     @param y {Integer} y coordinate of screen's position.
-    @param [testing=false] {Boolean} You hve to set to true when testing.
+    @param [testing=false] {Boolean} You have to set to true when testing.
     @example
         var adMob = new AdMob("publisher-id");
         adMob.show(0, 0);
@@ -42,8 +42,7 @@ class AdMob
     /**
     This method hides ad banner.
     @method hide
-    function hide()
-    {
-    }
+    */
+    function hide() { }
 
 }
