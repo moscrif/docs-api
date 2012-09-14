@@ -143,13 +143,13 @@ class String
     Creates string beginning by start index with required length.
     @method substr
     @param start {Integer} Zero-based index of first character.
-    @param [end] {Integer} A number of characters in the slice.
+    @param [length] {Integer} A number of characters in the slice.
     @return {String} Required string
     @example
         var str = "moscrif";
         str.substr(2,3); // scr
     */
-    function substr(start[, end])
+    function substr(start[, length])
     {
     }
 
