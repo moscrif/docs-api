@@ -315,4 +315,30 @@ class Moscrif.Window
     @param y {Integer} Y coordinates of pointer.
     */
     property onPointerDragged(sender, x, y) { }
+
+    /**
+    This property sets supported device orientations. If there are more supported orientations event onOrientationChanged is called, when device orientation change.
+        Supported are:
+
+    * #portrait
+    * #landscape-left
+    * #landscape-right
+    @property orientation
+    @type {Symbol}
+    */
+    property orientation(v) { }
+
+    /**
+    This event is raised by change device orientation.
+    @event onOrientationChanged
+    @param orientation {Symbol} New orientation of device
+    @example
+        game.onOrientationChanged = function(orientation)
+        {
+            // resize all photos to current orientation
+            logI("new orientation is : ", orientation);
+        }
+    */
+    property onOrientationChanged(v) { }
+    
 }

@@ -121,6 +121,27 @@ class Moscrif.ScrollView
     function hasFocus() { }
 
     /**
+    Search for child view, which name is same as name from function's param.
+    @method find
+    @param name {String} Name of the child view to search
+    @return {View} Instance of found child view, or null if not found.
+    @example
+        var container = new Moscrif.ScrollView("container");
+        
+        var itemA = new Moscrif.View("itemA");
+        container.add(itemA);
+        
+        var itemB = new Moscrif.View("itemB");
+        container.add(itemB);
+        …...
+        // find view by name
+        var item = container.find("itemA");
+        // detach them
+        item.detach();
+    */
+    function find(name) { }
+
+    /**
     Function scrolls elements by coordinates (dx and dy). However, this function scrolls only in adjusted set scroll mode (horizontal or vertical).
     @method scrollBy
     @chainable
