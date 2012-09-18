@@ -340,5 +340,5 @@ class Moscrif.Window
         }
     */
     property onOrientationChanged(v) { }
-    
+
 }
