@@ -45,4 +45,12 @@ class iAd
     */
     function hide() { }
 
+    /**
+    This event will be invoked when an error has occurred attempting to get advertisement content.
+    @event onError
+    @param code {Integer} The error code
+    @param message {String} The error description
+    */
+    property onError(v) { }
+
 }
