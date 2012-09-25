@@ -70,7 +70,7 @@ class System
         }
         System.scanFiles("dat://folder/*.txt", manage); //search for txt files in dat://folder/ returns number of files
     */
-    function scanFiles(path[, ef]) { }
+    function scanFiles(path, ef) { }
 
     /**
     Function returns home of the current application.
@@ -163,7 +163,7 @@ class System
             file: "dat://image.jpg",
         });
     */
-    function exec(cmd [, args[, dir]]) { }
+    function exec(cmd, args = null, dir = null) { }
 
     /**
     Checks, if file (sets by parameter) exists.
@@ -230,13 +230,13 @@ class System
     Copy source file to destination. If destination file exists and owerwrite is true function rewrites the file.
     @param source {String} Source file.
     @param destination {String} Destination.
-    @param [overwrite] {Boolean} Determines what happen when destination file exists. If destination file exists and owerwrite is true function rewrites the file. If overwrite is false function fails. default: false.
+    @param [overwrite=false] {Boolean} Determines what happen when destination file exists. If destination file exists and owerwrite is true function rewrites the file. If overwrite is false function fails. default: false.
     @method copyFile
     @return {Boolean} True if function succeed, otherwise returns false.
     @example
             System.copyFile("dat://source.txt", "dat://destination.txt");
     */
-    function copyFile(source, destination[, overwrite]) { }
+    function copyFile(source, destination, overwrite = false) { }
 
     /**
     Returns size of file in bytes.
@@ -257,7 +257,7 @@ class System
     /**
     Creates directory
     @param dir {String} Location and name of new directory If directory exists function returns false.
-    @param createSubDirs {Boolean}
+    @param [createSubDirs=false] {Boolean}
     @method createDir
     @return {Boolean} True if function succeed, otherwise returns false
     @example
@@ -267,7 +267,7 @@ class System
         else;
             // this folder alredy exists
     */
-    function createDir(dir [, createSubDirs]) { }
+    function createDir(dir, createSubDirs = false) { }
 
     /**
     Resets application's data. (Android only).
@@ -277,12 +277,12 @@ class System
     function resetApplicationData() { }
 
     /**
-    Returns the abbreviated name of the language, ISO Standard 639 names.
+    Returns the abbreviated name of the language, ISO Standard 639 names. List of ISO 639-1 code is available here: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
     @property language
     @type {String}
     @readOnly
     */
-    property language() { }
+    property language(v) { }
 
     /**
     The country (or the region) name, based on ISO Standard 3166.
@@ -290,7 +290,7 @@ class System
     @type {String}
     @readOnly
     */
-    property country() { }
+    property country(v) { }
 
     /**
      Number of miliseconds. This property is suitable for animation (game) scheduling.
@@ -298,7 +298,7 @@ class System
     @type {Integer}
     @readOnly
     */
-    property tick() { }
+    property tick(v) { }
 
     /**
     Avarage number of frames per second.
@@ -306,7 +306,7 @@ class System
     @type {Float}
     @readOnly
     */
-    property avgFPS() { }
+    property avgFPS(v) { }
 
     /**
     Minimum number of frames per second.
@@ -314,7 +314,7 @@ class System
     @type {Float}
     @readOnly
     */
-    property minFPS() { }
+    property minFPS(v) { }
 
     /**
     Maximum number of frames per second.
@@ -322,7 +322,7 @@ class System
     @type {Float}
     @readOnly
     */
-    property maxFPS() { }
+    property maxFPS(v) { }
 
     /**
     Average render time in ms.
@@ -330,7 +330,7 @@ class System
     @type {Float}
     @readOnly
     */
-    property avgRender() { }
+    property avgRender(v) { }
 
     /**
     Minimum render time in ms.
@@ -338,7 +338,7 @@ class System
     @type {Float}
     @readOnly
     */
-    property minRender() { }
+    property minRender(v) { }
 
     /**
     Maximum render time in ms.
@@ -346,7 +346,7 @@ class System
     @type {Float}
     @readOnly
     */
-    property maxRender() { }
+    property maxRender(v) { }
 
     /**
     Width of the device screen
@@ -354,7 +354,7 @@ class System
     @type {integer}
     @readOnly
     */
-    property width() { }
+    property width(v) { }
 
     /**
     Height of the device screen
@@ -362,7 +362,7 @@ class System
     @type {integer}
     @readOnly
     */
-    property height() { }
+    property height(v) { }
 
     /**
     Returns device's unique identifier
@@ -370,7 +370,7 @@ class System
     @type {String}
     @readOnly
     */
-    property deviceId() { }
+    property deviceId(v) { }
 
     /**
     Returns application's unique identifier.
@@ -378,7 +378,7 @@ class System
     @type {String}
     @readOnly
     */
-    property applicationId() { }
+    property applicationId(v) { }
 
    /**
     Returns Moscrif's RSA public key.
@@ -386,7 +386,7 @@ class System
     @type {String}
     @readOnly
     */
-    property publicKey() { }
+    property publicKey(v) { }
 
    /**
     Gets the device's operating system. Following symbols can be returned:
@@ -403,7 +403,7 @@ class System
     @final
     @readOnly
     */
-    property OS_NAME() { }
+    property OS_NAME(v) { }
 
 /**
     Flag used for read-only files.
@@ -411,7 +411,7 @@ class System
     @type {Integer}
     @readOnly
     */
-    property IS_READONLY() { }
+    property IS_READONLY(v) { }
 
 /**
     Flag used for directories.
@@ -419,7 +419,7 @@ class System
     @type {Integer}
     @readOnly
     */
-    property IS_DIR() { }
+    property IS_DIR(v) { }
 
 /**
     Flag used for hidden files and directories.
@@ -427,7 +427,7 @@ class System
     @type {Integer}
     @readOnly
     */
-    property IS_HIDDEN() { }
+    property IS_HIDDEN(v) { }
 
 /**
     Flag used for system files and directories.
@@ -435,7 +435,7 @@ class System
     @type {Integer}
     @readOnly
     */
-    property IS_SYSTEM() { }
+    property IS_SYSTEM(v) { }
 
 /**
     True if application runs in emulator.
@@ -443,7 +443,7 @@ class System
     @type {Boolean}
     @readOnly
     */
-    property IS_EMULATOR() { }
+    property IS_EMULATOR(v) { }
 
 /**
     True for debug version of Moscrif run-time.
@@ -451,7 +451,7 @@ class System
     @type {Boolean}
     @readOnly
     */
-    property IS_RT_DEBUG() { }
+    property IS_RT_DEBUG(v) { }
 
 /**
     True if aplication runs on tablet.
@@ -459,7 +459,7 @@ class System
     @type {Boolean}
     @readOnly
     */
-    property IS_TABLET() { }
+    property IS_TABLET(v) { }
 
 /**
     True if application is currently in debug mode.
@@ -467,5 +467,5 @@ class System
     @type {Boolean}
     @readOnly
     */
-    property IS_DEBUG() { }
+    property IS_DEBUG(v) { }
 }
