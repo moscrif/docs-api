@@ -45,6 +45,7 @@ class Array
     Refers to a particular element of the array at the index position. Index is zero-based.
     @property [index]
     @type {Object}
+    @example
         var myCars=new Array("Saab", "Volvo", "BMW");
         console<<myCars[1]<<"\n";   // Volvo
     */
