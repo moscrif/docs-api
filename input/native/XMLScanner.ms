@@ -20,7 +20,7 @@ class XMLScanner
     @final
     @type {Integer}
     */
-    property ERROR() { }
+    property ERROR(v) { }
 
     /**
     End of stream reached.
@@ -28,7 +28,7 @@ class XMLScanner
     @final
     @type {Integer}
     */
-    property EOF() { }
+    property EOF(v) { }
 
     /**
     Head of the element parsed.
@@ -39,7 +39,7 @@ class XMLScanner
         <tag ...
         ^-- happens here
     */
-    property HEAD() { }
+    property HEAD(v) { }
 
        /**
     End of head of non-empty element parsed.
@@ -50,7 +50,7 @@ class XMLScanner
             <tag ...
             ____^-- happens here
     */
-    property HEAD_END() { }
+    property HEAD_END(v) { }
 
        /**
     End of head of empty element parsed
@@ -61,7 +61,7 @@ class XMLScanner
             <tag ... />
             _____^-- happens here
     */
-    property EMPTY_HEAD_END() { }
+    property EMPTY_HEAD_END(v) { }
 
        /**
     Tail of the non-empty element parsed
@@ -72,9 +72,9 @@ class XMLScanner
             <tag ... />
             ^-- happens here
     */
-    property TAIL() { }
+    property TAIL(v) { }
 
-       /**
+    /**
     Attribute can be with or without (html style) value. scanner.attribute is the name of attribute and scanner.value - is a value of attribute. Attribute parsed.
     @property ATTR
     @final
@@ -83,17 +83,17 @@ class XMLScanner
         <tag attr="value" >
         _______________^-- happens here
     */
-    property ATTR() { }
+    property ATTR(v) { }
 
-       /**
+    /**
     Space sequence parsed.
     @property WORD
     @final
     @type {Integer}
     */
-    property WORD() { }
+    property WORD(v) { }
 
-       /**
+    /**
     CData parsed.
     @property CDATA
     @final
@@ -102,9 +102,9 @@ class XMLScanner
             <![CDATA[ ...value... ]]>
             __________________^-- happens here
     */
-    property CDATA() { }
+    property CDATA(v) { }
 
-       /**
+    /**
     Processing instruction parsed.
     @property PI
     @final
@@ -113,7 +113,7 @@ class XMLScanner
             <? ...value... ?>
             ___________^-- happens here
     */
-    property PI() { }
+    property PI(v) { }
 
        /**
     Scanner.value contains text of the doctype declaration: characters after <!DOCTYPE and before closing '>' doctype declaration parsed
@@ -124,28 +124,28 @@ class XMLScanner
             <!DOCTYPE ...value... >
             ___________________^-- happens here
     */
-    property DOCTYPE() { }
+    property DOCTYPE(v) { }
 
 /**
     Text of attribute value, text, cdata or pi.
     @property value
     @type {String}
     */
-    property value() { }
+    property value(v) { }
 
  /**
     Name of the attribute. Valid if token == XMLScanner.ATTR.
     @property attribute
     @type {String}
     */
-    property attribute() { }
+    property attribute(v) { }
 
     /**
     Name of the tag. Valid if token is XMLScanner.HEAD, XMLScanner.TAIL or XMLScanner.HEAD_END.
     @property tag
     @type {String}
     */
-    property tag() { }
+    property tag(v) { }
 
     /**
     Reports current line number in input stream
@@ -153,7 +153,7 @@ class XMLScanner
     @readOnly
     @type {Integer}
     */
-    property lineNo() { }
+    property lineNo(v) { }
 
    /**
     Returns one of constants above.  Use them in fully qualified form, e.g. XMLScanner.HEAD, XMLScanner.TAIL, etc.

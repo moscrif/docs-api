@@ -23,7 +23,7 @@ class String
     @type {Integer}
     @example
         var string = "Moscrif";
-        console<<string[1]<<"\n";       // 111 -> ASCII M
+        console<<string[0]<<"\n";       // 111 -> ASCII M
         string[0] = 100;                // 100 -> ASCII 100 = d
         console<<string<<"\n";          // doscrif
     */

@@ -115,9 +115,18 @@ class Math
     @method atan
     @param number {Float|Integer} Value to calculate arccosine.
     @param [number]* {Float|Integer} Value to calculate arccosine.
-    @return {Float|Integer} Returns arctangent if its arguments.
+    @return {Float} Returns arctangent if its arguments.
     */
     function atan(number [, number] ) { }
+
+    /**
+    Returns the principal value of the arc tangent of y/x,
+    @method atan2
+    @param x {Float|Integer} This value represents x-coordinate.
+    @param y {Float|Integer} This value represents y-coordinate.
+    @return {Float} Returns arctangent of y/x.
+    */
+    function atan2(x, y) { }
 
     /**
     Returns the square root of the argument.
