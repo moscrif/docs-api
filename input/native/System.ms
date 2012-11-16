@@ -115,6 +115,7 @@ class System
     * "record-video" - record video; parameter file: is overwriten if exists, callback: function which accept maximum of one parameter (location of taken video)
     * "play-video" - play video in default video player
     * "open-url" - open url in web browser
+    * "open-url" - open url in web browser
 
     @param [args] {String} Command line arguments.
     @param [dir] {String} orking directory.
@@ -162,6 +163,26 @@ class System
             command: "show-image",
             file: "dat://image.jpg",
         });
+
+        //"thread"
+        System.exec({
+            command: "thread",
+            file: "app://code.ms",
+            input:"{input1: 1, input2: [1, 2, 3]}",
+            callback: function(output) {
+                var json = parseData(output);
+                console << json.output1 << "\n"; // 2
+                console << json.output2 << "\n"; // [1, 2, 3, 4]
+            }
+        });
+        //
+        // code.ms :
+        //
+            var input = parseData(INPUT);
+            var arr = input.input2;
+            arr.push(4);
+            var ouput = {output1: input.input1 + 1, output2:arr};
+            return output;
     */
     function exec(cmd, args = null, dir = null) { }
 
